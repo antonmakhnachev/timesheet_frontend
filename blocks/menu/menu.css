@@ -1,0 +1,9 @@
+@import url("./__item/menu__item.css");
+@import url("./__line/menu__line.css");
+
+
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

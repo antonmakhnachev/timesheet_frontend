@@ -1,0 +1,25 @@
+@import url("./__head/popup-menu__head.css");
+@import url("./__title/popup-menu__title.css");
+@import url("./__close-icon/popup-menu__close-icon.css");
+@import url("./__line/popup-menu__line.css");
+@import url("./__place/popup-menu__place.css");
+@import url("./__items/popup-menu__items.css");
+@import url("./__item/popup-menu__item.css");
+@import url("./__icon/popup-menu__icon.css");
+@import url("./__menu-icon/popup-menu__menu-icon.css");
+
+.popup-menu {
+    position: absolute;   
+    height: 500px;
+    background-color: rgba(0, 83, 140, 1);
+    color: #ffffff;
+    padding: 14px 15px 0 15px;    
+}
+
+/* .popup-menu_full {
+    width: 287px;
+}
+
+.popup-menu_mini {
+    width: 50px;
+} */

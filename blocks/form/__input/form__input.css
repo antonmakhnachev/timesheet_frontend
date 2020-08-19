@@ -1,0 +1,13 @@
+.form__input {
+    font-size: 14px;
+    width: 70%;
+    height: 30px;
+    box-sizing: border-box;
+    /* margin-left: 50px; */
+    border: none;
+    border-bottom: 1px #000000 solid;
+}
+
+.form__input_date {
+    width: 150px;
+}

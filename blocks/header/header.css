@@ -1,0 +1,13 @@
+@import url("./__text/header__text.css");
+@import url("./__button-logout/header__button-logout.css");
+@import url("./__logout-img/header__logout-img.css");
+
+
+
+.header {      
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    padding: 0 50px 11px 50px;
+    border-bottom: 2px rgba(224, 229, 234, 1) solid;    
+}
