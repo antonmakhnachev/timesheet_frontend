@@ -11,6 +11,9 @@ import {PopupControl} from '../scripts/popupControl.js';
     const menuShowingIcon = document.querySelector('.popup-menu__menu-icon');
     const popups = document.querySelectorAll('.popup');
 
+    const buttonNewDoc = document.querySelector('.timesheet__button');
+    const formNewDoc = document.forms.form_new_doc;
+
 
 
 
@@ -23,6 +26,11 @@ import {PopupControl} from '../scripts/popupControl.js';
 
     menuShowingIcon.addEventListener('click', () => {
         menuControl.show();        
+    });
+
+    buttonNewDoc.addEventListener('click', () => {
+        const popup = formNewDoc.closest('.popup');
+        popupControl.open(popup);
     });
 
 

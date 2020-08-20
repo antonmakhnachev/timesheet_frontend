@@ -4,11 +4,9 @@
 
 
 
-.header { 
-    /* position: fixed; */
+.header {    
     display: flex;
-    align-items: center;
-    margin-top: 15px;
+    align-items: center;    
     padding: 0 50px 11px 50px;
     border-bottom: 2px rgba(224, 229, 234, 1) solid;    
 }

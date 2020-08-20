@@ -7,11 +7,13 @@
 @import url("./__table-content/timesheet__table-content.css");
 @import url("./__table-data/timesheet__table-data.css");
 @import url("./__table-caption/timesheet__table-caption.css");
+@import url("./__button/timesheet__button.css");
 
 
 
 .timesheet {
-
-    /* border: 1px red solid; */
+    margin: 0;
+    border: 1px #ffffff solid;
+    box-sizing: border-box;
 
 }

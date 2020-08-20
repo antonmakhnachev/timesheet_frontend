@@ -66,6 +66,7 @@
         <div class="timesheet">
             <h2 class="timesheet__title">Табель учета рабочего времени</h2>
             <p class="timesheet__period">за период с 1 Августа 2020 г. по 15 Августа 2020 г.</p>
+            <button class="button timesheet__button">Добавить документ</button>
 
             <table class="timesheet__table">
                 <thead class="timesheet__table-head">
@@ -249,11 +250,11 @@
         </nav>
     </section>
 
-    <div class="popup popup_is-opened">
+    <div class="popup">
         <div class="popup__content">
             <h2 class="popup__title">Новый документ</h2>
             <img class="popup__close-icon" src="../images/icon_close_blue.png" alt="Image error">
-            <form action="" class="form">
+            <form action="" class="form" name="form_new_doc">
                 <div class="form__block">
                     <label for="doc_staff" class="form__label">Сотрудник:</label>
                     <select class="form__input" id="doc_staff">
