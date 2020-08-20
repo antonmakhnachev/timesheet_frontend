@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="">
-    <link rel="stylesheet" href ="./main.css">
-    <title>Табель учета рабочего времени</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="">
+        <link rel="stylesheet" href ="./main.css">
+        <title>Табель учета рабочего времени</title>
+    </head>
 <body class="page">
 
     <header class="header">
@@ -30,7 +30,7 @@
     <section class="content">
 
 
-        <div class="new-document">
+        <!-- <div class="new-document">
             <div class="new-document__form-place">
                 <form action="" class="form">
                     <div class="form__block">
@@ -61,7 +61,7 @@
 
                 </form>
             </div>
-        </div>
+        </div> -->
 
         <div class="timesheet">
             <h2 class="timesheet__title">Табель учета рабочего времени</h2>
@@ -248,6 +248,44 @@
 
         </nav>
     </section>
+
+    <div class="popup">
+        <div class="popup__content">
+            <h2 class="popup__title">Новый документ</h2>
+            <img class="popup__close-icon" src="../images/icon_close_blue.png" alt="Image error">
+            <form action="" class="form">
+                <div class="form__block">
+                    <label for="doc_staff" class="form__label">Сотрудник:</label>
+                    <select class="form__input" id="doc_staff">
+                        <option value="">Иванов Иван Иванович</option>
+                    </select>
+                </div>
+
+                <div class="form__block">
+                    <label for="doc_type" class="form__label">Документ:</label>
+                    <select class="form__input" id="doc_type">
+                        <option value="">Оплачиваемый отпуск</option>
+                    </select>
+                </div>
+
+                <div class="form__block">
+                    <label for="doc_date_from" class="form__label">Дата начала:</label>
+                    <input type="date" class="form__input form__input_date" id="doc_date_from">
+                    
+                </div>
+
+                <div class="form__block">
+                    <label for="doc_date_to" class="form__label">Дата окончания:</label>
+                    <input type="date" class="form__input form__input_date" id="doc_date_to">
+                </div>
+                <button class="form__button button">Добавить</button>
+                
+
+            </form>
+
+        </div>
+
+    </div>
     
     <script type="module" src="main.js"></script>
 </body>

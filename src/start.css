@@ -1,0 +1,17 @@
+@import url("../blocks/form-place/form-place.css");
+@import url("../blocks/logo/logo.css");
+
+
+
+.page {
+    display: flex;
+    justify-content: center;
+    
+    font-family: 'HelveticaNeueCyr';
+    font-weight: normal;
+    font-style: normal;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
