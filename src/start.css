@@ -1,5 +1,7 @@
-@import url("../blocks/form-place/form-place.css");
 @import url("../blocks/logo/logo.css");
+@import url("../blocks/popup/popup.css");
+@import url("../blocks/form/form.css");
+@import url("../blocks/button/button.css");
 
 
 
@@ -13,5 +15,5 @@
     box-sizing: border-box;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
 }

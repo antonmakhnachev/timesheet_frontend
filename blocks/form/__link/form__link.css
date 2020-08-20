@@ -1,0 +1,10 @@
+.form__link {
+    font-size: 14px;
+    margin-top: 5px;
+    color: rgb(0, 83, 140);
+    text-decoration: none;
+}
+
+.form__link:hover {
+    text-decoration: underline;
+}

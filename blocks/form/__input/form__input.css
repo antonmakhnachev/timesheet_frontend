@@ -1,11 +1,18 @@
 .form__input {
     font-size: 14px;
-    width: 70%;
+    width: 100%;
     height: 30px;
-    box-sizing: border-box;
-    /* margin-left: 50px; */
+    box-sizing: border-box;    
     border: none;
-    border-bottom: 1px #000000 solid;
+    border-bottom: 1px rgb(0, 83, 140) solid;
+    padding-left: 0;
+    margin-bottom: 10px;
+
+    /* border: 1px red solid; */
+}
+
+.form__input:focus {
+    outline: none;
 }
 
 .form__input_date {
