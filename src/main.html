@@ -9,9 +9,10 @@
     <title>Табель учета рабочего времени</title>
 </head>
 <body class="page">
+
     <header class="header">
         <div class="logo">
-            <img class="logo__img" src="../images/logo.png">
+            <a href="https://glavapu-mos.ru/" target="_blank"><img class="logo__img" src="../images/logo.png"></a>
             <p class="logo__text">Главное архитекруто-планировночное управление Москомархитектуры</p>
         </div>
         <div class="header__text">
@@ -26,89 +27,111 @@
     </header>
 
 
+    <section class="content">
 
-    <section class="new-document">
-        <div class="new-document__form-place">
-            <form action="" class="form">
-                <div class="form__block">
-                    <label for="doc_staff" class="form__label">Сотрудник:</label>
-                    <select class="form__input" id="doc_staff">
-                        <option value="">Иванов Иван Иванович</option>
-                    </select>
-                </div>
 
-                <div class="form__block">
-                    <label for="doc_type" class="form__label">Документ:</label>
-                    <select class="form__input" id="doc_type">
-                        <option value="">Оплачиваемый отпуск</option>
-                    </select>
-                </div>
+        <div class="new-document">
+            <div class="new-document__form-place">
+                <form action="" class="form">
+                    <div class="form__block">
+                        <label for="doc_staff" class="form__label">Сотрудник:</label>
+                        <select class="form__input" id="doc_staff">
+                            <option value="">Иванов Иван Иванович</option>
+                        </select>
+                    </div>
 
-                <div class="form__block">
-                    <label for="doc_date_from" class="form__label">Дата начала:</label>
-                    <input type="date" class="form__input form__input_date" id="doc_date_from">
+                    <div class="form__block">
+                        <label for="doc_type" class="form__label">Документ:</label>
+                        <select class="form__input" id="doc_type">
+                            <option value="">Оплачиваемый отпуск</option>
+                        </select>
+                    </div>
+
+                    <div class="form__block">
+                        <label for="doc_date_from" class="form__label">Дата начала:</label>
+                        <input type="date" class="form__input form__input_date" id="doc_date_from">
+                        
+                    </div>
+
+                    <div class="form__block">
+                        <label for="doc_date_to" class="form__label">Дата окончания:</label>
+                        <input type="date" class="form__input form__input_date" id="doc_date_to">
+                    </div>
                     
-                </div>
 
-                <div class="form__block">
-                    <label for="doc_date_to" class="form__label">Дата окончания:</label>
-                    <input type="date" class="form__input form__input_date" id="doc_date_to">
-                </div>
-                
-
-            </form>
-        </div>
-    </section>
-
-
-
-
-
-    <!-- <section class="popup-menu">
-
-            <div class="popup-menu__head">
-                <h3 class="popup-menu__title">
-                    <img class="popup-menu__menu-icon" src="../images/icon_menu_mini_white.png">
-                    Меню
-                </h3>
-                <img class="popup-menu__close-icon" src="../images/icon_close_white.png" alt="Image error">
+                </form>
             </div>
-            <hr class="popup-menu__line">
+        </div>
 
-            <div class="popup-menu__place">
 
-                <ul class="popup-menu__items">
-                    <li class="popup-menu__item">
-                        <img class="popup-menu__icon" src="../images/icon_timesheet_white.png" alt="Image error">
-                        Табель
-                    </li>                    
-                    <li class="popup-menu__item">
-                        <img class="popup-menu__icon" src="../images/icon_report_white.png" alt="Image error">
-                        Отчеты
-                    </li>
-                    <li class="popup-menu__item">
-                        <img class="popup-menu__icon" src="../images/icon_info_white.png" alt="Image error">
-                        Общая информация
-                    </li>
-                    <li class="popup-menu__item">
-                        <img class="popup-menu__icon" src="../images/icon_calendar_white.png" alt="Image error">
-                        Календарный план
-                    </li>
-                </ul>        
 
-                <ul class="popup-menu__items">
-                    <li class="popup-menu__item">
-                        <img class="popup-menu__icon" src="../images/icon_support_white.png" alt="Image error">
-                        Поддержка
-                    </li>
-                    <li class="popup-menu__item">
-                        <img class="popup-menu__icon" src="../images/icon_logout_white.png" alt="Image error">
-                        Выход
-                    </li>            
-                </ul>
-            </div>        
 
-    </section> -->
+
+        <nav class="popup-menu">
+
+                <div class="popup-menu__head">
+                    <div class="popup-menu__header">
+                        <img class="popup-menu__menu-icon" src="../images/icon_menu_mini_white.png">
+                        <h3 class="popup-menu__title popup-menu__text">Меню</h3>                        
+                    </div>
+                    <img class="popup-menu__close-icon" src="../images/icon_close_white.png" alt="Image error">
+                </div>
+                <hr class="popup-menu__line-head">
+
+                <div class="popup-menu__place">
+
+                    <ul class="popup-menu__items">
+                        <li class="popup-menu__item">
+                            <a class="popup-menu__link" href="">
+                                <img class="popup-menu__icon" src="../images/icon_timesheet_white.png" alt="Image error">
+                                <span class="popup-menu__text">Табель</span>                                
+                            </a>
+                            <hr class="popup-menu__line">
+                        </li>                    
+                        <li class="popup-menu__item">
+                            <a class="popup-menu__link" href="">
+                                <img class="popup-menu__icon" src="../images/icon_report_white.png" alt="Image error">
+                                <span class="popup-menu__text">Отчеты</span>                                                            
+                            </a>
+                            <hr class="popup-menu__line">                            
+                        </li>
+                        <li class="popup-menu__item">
+                            <a class="popup-menu__link" href="">
+                                <img class="popup-menu__icon" src="../images/icon_info_white.png" alt="Image error">
+                                <span class="popup-menu__text">Общая информация</span>                                                            
+                            </a>
+                            <hr class="popup-menu__line">
+                        </li>
+                        <li class="popup-menu__item">
+                            <a class="popup-menu__link" href="">
+                                <img class="popup-menu__icon" src="../images/icon_calendar_white.png" alt="Image error">
+                                <span class="popup-menu__text">Календарный план</span>                                
+                            </a>
+                            <hr class="popup-menu__line">
+                        </li>
+                    </ul>        
+
+                    <ul class="popup-menu__items">
+                        <li class="popup-menu__item">
+                            <a class="popup-menu__link" href="">
+                                <img class="popup-menu__icon" src="../images/icon_support_white.png" alt="Image error">
+                                <span class="popup-menu__text">Поддержка</span>                                
+                            </a>
+                            <hr class="popup-menu__line">
+                        </li>
+                        <li class="popup-menu__item">
+                            <a class="popup-menu__link" href="">
+                                <img class="popup-menu__icon" src="../images/icon_logout_white.png" alt="Image error">
+                                <span class="popup-menu__text">Выход</span>                                
+                            </a>
+                            <hr class="popup-menu__line">
+                        </li>            
+                    </ul>
+                </div>        
+
+        </nav>
+    </section>
     
+    <script type="module" src="main.js"></script>
 </body>
 </html>

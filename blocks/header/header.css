@@ -4,7 +4,8 @@
 
 
 
-.header {      
+.header { 
+    /* position: fixed; */
     display: flex;
     align-items: center;
     margin-top: 15px;

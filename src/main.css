@@ -8,18 +8,19 @@
 @import url("../blocks/logout-icon/logout-icon.css");
 @import url("../blocks/new-document/new-document.css");
 @import url("../blocks/form/form.css");
+@import url("../blocks/content/content.css");
 
 
 
 
 
-.page {
-    position: relative;
+.page {    
     max-width: 1440px;
     margin: auto;
     font-family: 'HelveticaNeueCyr';
     font-weight: normal;
     font-style: normal;
+    box-sizing: border-box;
 
     border: 1px red solid;
 }

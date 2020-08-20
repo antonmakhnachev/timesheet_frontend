@@ -1,0 +1,6 @@
+@import url("./_is-visible/popup-menu__text_is-visible.css");
+
+.popup-menu__text {
+    margin-left: 4px;
+    display: none;    
+}

@@ -1,5 +1,11 @@
 .popup-menu__line {
     border: none;
     height: 3px;
-    background-color: #ffffff;    
+    background-color: #ffffff;
+    visibility: hidden;
+    margin-top: 2px;   
+}
+
+.popup-menu__line:hover {
+    visibility: visible;
 }

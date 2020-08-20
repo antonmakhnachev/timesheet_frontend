@@ -1,0 +1,10 @@
+.popup-menu__link {
+    display: flex;
+    text-decoration: none;
+    color: #ffffff;    
+}
+
+.popup-menu__link:hover + .popup-menu__line {   
+    visibility: visible;
+    
+}

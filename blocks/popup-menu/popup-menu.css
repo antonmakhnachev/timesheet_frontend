@@ -7,19 +7,19 @@
 @import url("./__item/popup-menu__item.css");
 @import url("./__icon/popup-menu__icon.css");
 @import url("./__menu-icon/popup-menu__menu-icon.css");
+@import url("./__link/popup-menu__link.css");
+@import url("./__text/popup-menu__text.css");
+@import url("./__header/popup-menu__header.css");
+
 
 .popup-menu {
-    position: absolute;   
-    height: 500px;
+    position: absolute;       
     background-color: rgba(0, 83, 140, 1);
     color: #ffffff;
-    padding: 14px 15px 0 15px;    
-}
-
-/* .popup-menu_full {
-    width: 287px;
-}
-
-.popup-menu_mini {
+    padding: 14px 15px 0 15px;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    bottom: 0;
     width: 50px;
-} */
+}

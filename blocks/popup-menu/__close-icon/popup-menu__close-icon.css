@@ -1,4 +1,9 @@
-.menu__close-icon {
+@import url("./_is-visible/popup-menu__close-icon_is-visible.css");
+
+.popup-menu__close-icon {
     width: 14px;
     height: 14px;
+    cursor: pointer;
+    display: none;
 }
+
