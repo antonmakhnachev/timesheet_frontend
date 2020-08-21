@@ -1,0 +1,8 @@
+@import url("./__button/staff-content__button.css");
+@import url("./__title/staff-content__title.css");
+
+.staff-content {
+
+
+    border: 1px red solid;
+}
