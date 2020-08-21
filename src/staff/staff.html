@@ -149,39 +149,79 @@
                 </div>        
 
         </nav>
+
     </section>
 
     <div class="popup">
         <div class="popup__content popup__content_form-new-doc">
-            <h2 class="popup__title">Новый документ</h2>
+            <h2 class="popup__title">Новый сотрудник</h2>
             <img class="popup__close-icon" src="../../images/icon_close_blue.png" alt="Image error">
-            <form action="" class="form" name="form_new_doc">
-                <!-- <div class="form__block"> -->
-                    <label for="doc_staff" class="form__label">Сотрудник:</label>
-                    <select class="form__input" id="doc_staff">
-                        <option value="">Иванов Иван Иванович</option>
-                    </select>
-                <!-- </div> -->
+            <form action="" class="form" name="form_new_staff">
 
-                <!-- <div class="form__block"> -->
-                    <label for="doc_type" class="form__label">Документ:</label>
-                    <select class="form__input" id="doc_type">
-                        <option value="">dddd</option>
-                        <option value="">fffff</option>
-                    </select>
-                <!-- </div> -->
+            <table>
+                <tr class="table__row">
+                    <td>
+                        <label class="form__label" for="employee_number">Табельный номер</label>
+                        <input class="form__input" id="employee_number">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="form__label" for="second_name">Фамилия</label>
+                        <input class="form__input" id="second_name">
+                    </td>
+                    <td>
+                        <label class="form__label" for="first_name">Имя</label>
+                        <input class="form__input" id="first_name">
+                    </td>
 
-                <!-- <div class="form__block"> -->
-                    <label for="doc_date_from" class="form__label">Дата начала:</label>
-                    <input type="date" class="form__input form__input_date" id="doc_date_from">
                     
-                <!-- </div> -->
+                   
+                </tr>
+                
+                <tr>
+                    <!-- <td>
+                        <label class="form__label" for="first_name">Имя</label>
+                        <input class="form__input" id="first_name">
+                    </td> -->
+                </tr>
+                <tr>
+                    <td>
+                        <label class="form__label" for="middle_name">Отчество</label>
+                        <input class="form__input" id="middle_name">
+                    </td>
+                </tr>
 
-                <!-- <div class="form__block"> -->
-                    <label for="doc_date_to" class="form__label">Дата окончания:</label>
-                    <input type="date" class="form__input form__input_date" id="doc_date_to">
-                <!-- </div> -->
+                <tr>
+                    <td>
+                        <label class="form__label" for="gender">Пол</label>
+                        <input class="form__input" id="gender">
+                    </td>
+                    <td>
+                        <label class="form__label" for="birthday">Дата рождения</label>
+                        <input class="form__input" id="birthday" type="date" placeholder="Дата рождения">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label class="form__label" for="phone">Телефон</label>
+                        <input class="form__input" id="phone">
+                    </td>
+                    <td>
+                        <label class="form__label" for="email">E-mail</label>
+                        <input class="form__input" id="email" type="email">
+                    </td>
+                </tr>
+
+
+            </table>
+
+                
+
+                
                 <button class="form__button button">Добавить</button>
+
                 
 
             </form>

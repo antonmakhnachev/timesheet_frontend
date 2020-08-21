@@ -12,7 +12,8 @@ import {PopupControl} from '../../scripts/popupControl.js';
     const menuShowingIcon = document.querySelector('.popup-menu__menu-icon');
     const popups = document.querySelectorAll('.popup');
 
-    
+    const buttonNewStaff = document.querySelector('.staff-content__button');
+    const formNewStaff = document.forms.form_new_staff;
     
 
 
@@ -31,7 +32,10 @@ import {PopupControl} from '../../scripts/popupControl.js';
 
     
 
-
+    buttonNewStaff.addEventListener('click', () => {
+        const popup = formNewStaff.closest('.popup');
+        popupControl.open(popup);
+    });
     
 
 
