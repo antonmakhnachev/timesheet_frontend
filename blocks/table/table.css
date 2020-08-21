@@ -1,0 +1,14 @@
+@import url("./__caption/table__caption.css");
+@import url("./__cell/table__cell.css");
+@import url("./__content/table__content.css");
+@import url("./__data/table__data.css");
+@import url("./__head/table__head.css");
+@import url("./__row/table__row.css");
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    
+    
+}
