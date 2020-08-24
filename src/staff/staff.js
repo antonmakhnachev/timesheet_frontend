@@ -1,9 +1,9 @@
 //import './staff.css';
 console.log('test');
 
-import {MenuControl} from '../../scripts/menuControl.js';
-import {PopupControl} from '../../scripts/popupControl.js';
-import {GetCurDateTime} from '../../scripts/getCurDateTime.js';
+import {MenuControl} from '../js/components/menuControl.js';
+import {PopupControl} from '../js/components/popupControl.js';
+import {GetCurDateTime} from '../js/utils/getCurDateTime.js';
 
 
 (function () {

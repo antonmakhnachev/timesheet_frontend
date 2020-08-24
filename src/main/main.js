@@ -1,8 +1,8 @@
 // import './main.css';
 console.log('test');
 
-import {MenuControl} from '../../scripts/menuControl.js';
-import {PopupControl} from '../../scripts/popupControl.js';
+import {MenuControl} from '../js/components/menuControl.js';
+import {PopupControl} from '../js/components/popupControl';
 
 
 (function () {
