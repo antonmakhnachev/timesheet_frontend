@@ -3,6 +3,7 @@
 @import url("./__label/form__label.css");
 @import url("./__button/form__button.css");
 @import url("./__link/form__link.css");
+@import url("./__control-icon/form__control-icon.css");
 
 .form {
     display: flex;

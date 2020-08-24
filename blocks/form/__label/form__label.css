@@ -1,7 +1,10 @@
 .form__label {
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
     font-size: 14px;
     margin: 0%;
-    color: rgb(0, 83, 140)
+    color: rgb(0, 83, 140);
 
     /* border: 1px red solid; */
     

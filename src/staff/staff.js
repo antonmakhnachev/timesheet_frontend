@@ -3,6 +3,7 @@ console.log('test');
 
 import {MenuControl} from '../../scripts/menuControl.js';
 import {PopupControl} from '../../scripts/popupControl.js';
+import {GetCurDateTime} from '../../scripts/getCurDateTime.js';
 
 
 (function () {
@@ -11,6 +12,7 @@ import {PopupControl} from '../../scripts/popupControl.js';
     const menuHidingIcon = document.querySelector('.popup-menu__close-icon');
     const menuShowingIcon = document.querySelector('.popup-menu__menu-icon');
     const popups = document.querySelectorAll('.popup');
+    const curDate = document.querySelector('.date');
 
     const buttonNewStaff = document.querySelector('.staff-content__button');
     const formNewStaff = document.forms.form_new_staff;
@@ -21,6 +23,7 @@ import {PopupControl} from '../../scripts/popupControl.js';
 
     const menuControl = new MenuControl(menu);
     const popupControl = new PopupControl();
+    const getCurDateTime = new GetCurDateTime();
 
     menuHidingIcon.addEventListener('click', () => {
         menuControl.hide();        
@@ -55,7 +58,8 @@ import {PopupControl} from '../../scripts/popupControl.js';
 
 
     menuControl.open(menu);
-
+    curDate.textContent = `Сегодня: ${getCurDateTime.getCurDate()}`;
+    
 
 
 

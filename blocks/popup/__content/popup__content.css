@@ -1,5 +1,6 @@
 @import url("./_form-auth/popup__content_form-auth.css");
 @import url("./_form-new-doc/popup__content_form-new-doc.css");
+@import url("./_form-new-staff/popup__content_form-new-staff.css");
 
 .popup__content {
     position: relative;    

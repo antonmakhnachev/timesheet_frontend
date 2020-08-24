@@ -1,4 +1,6 @@
 .popup__content.popup__content_form-new-staff {
-    width: 400px;
+    width: 600px;
     height: max-content;
+
+    /* border: 1px red solid; */
 }
