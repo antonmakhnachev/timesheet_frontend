@@ -2,7 +2,7 @@
 console.log('test');
 
 import {MenuControl} from '../js/components/menuControl.js';
-import {PopupControl} from '../js/components/popupControl';
+import {PopupControl} from '../js/components/popupControl.js';
 
 
 (function () {

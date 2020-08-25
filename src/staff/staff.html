@@ -156,23 +156,23 @@
         <div class="popup__content popup__content_form-new-staff">
             <h2 class="popup__title">Новый сотрудник</h2>
             <img class="popup__close-icon" src="../../images/icon_close_blue.png" alt="Image error">
-            <form action="" class="form" name="form_new_staff">
+            <form action="" class="form" name="form_new_staff" novalidate>
 
             <table>
                 <tr class="table__row">
                     <td>
                         <label class="form__label" for="employee_number">Табельный номер</label>
-                        <input class="form__input" id="employee_number">
+                        <input class="form__input" id="employee_number" required>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <label class="form__label" for="second_name">Фамилия</label>
-                        <input class="form__input" id="second_name">
+                        <input class="form__input" id="second_name" required>
                     </td>
                     <td>
                         <label class="form__label" for="first_name">Имя</label>
-                        <input class="form__input" id="first_name">
+                        <input class="form__input" id="first_name" required>
                     </td>
 
                     
@@ -193,10 +193,14 @@
                     <td>
                         <label class="form__label" for="gender">Пол</label>
                         <select class="form__input" id="gender">
+                            <option></option>
+                            <option>Женский</option>
+                            <option>Мужской</option>
+                        </select>
                     </td>
                     <td>
                         <label class="form__label" for="birthday">Дата рождения</label>
-                        <input class="form__input" id="birthday" type="date" placeholder="Дата рождения">
+                        <input class="form__input" id="birthday" type="date">
                     </td>
                 </tr>
 
@@ -207,30 +211,38 @@
                     </td>
                     <td>
                         <label class="form__label" for="email">E-mail</label>
-                        <input class="form__input" id="email" type="email">
+                        <input class="form__input" id="email" type="email" required>
                     </td>
                 </tr>
 
                 <tr>
                     <td>
                         <label class="form__label" for="position">Должность</label>
-                        <select class="form__input" id="position">
+                        <select class="form__select form__select-position" id="position" required>
+                            <option></option>
+                        </select>
                     </td>
                     <td>
                         <label class="form__label" for="department">Подразделение</label>
-                        <select class="form__input" id="department">
+                        <select class="form__select form__select-department" id="department" required>
+                            <option></option>
+                        </select>
                     </td>
                 </tr>
 
                 <tr>
                     <td>                        
                         <label class="form__label" for="shedule">График работы</label>
-                        <select class="form__input" id="shedule">
+                        <select class="form__select form__select-schedule" id="schedule" required>
+                            <option></option>
+                        </select>
                         
                     </td>
                     <td>
                         <label class="form__label" for="type_work">Тип работы</label>
-                        <select class="form__input" id="type_work">
+                        <select class="form__select form__select-type-work" id="type_work" required>
+                            <option></option>
+                        </select>
                     </td>
                 </tr>
 

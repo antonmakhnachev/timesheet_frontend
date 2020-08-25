@@ -4,6 +4,7 @@
 @import url("./__button/form__button.css");
 @import url("./__link/form__link.css");
 @import url("./__control-icon/form__control-icon.css");
+@import url("./__select/form__select.css");
 
 .form {
     display: flex;
