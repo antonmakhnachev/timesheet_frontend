@@ -43,19 +43,20 @@
                     <th class="table__cell">Должность</th>
                     <th rowspan="2" class="table__cell">Тек. график</th>
 
-                    <th colspan="2" class="table__cell">Пн.</th>
+                    <!-- <th colspan="2" class="table__cell">Пн.</th>
                     <th colspan="2" class="table__cell">Вт.</th>
                     <th colspan="2" class="table__cell">Ср.</th>
                     <th colspan="2" class="table__cell">Чт.</th>
-                    <th colspan="2" class="table__cell">Пт.</th>                    
+                    <th colspan="2" class="table__cell">Пт.</th>                     -->
 
-                    <th class="table__cell">Нач. раб. дня</th>
+                    <!-- <th class="table__cell">Нач. раб. дня</th> -->
+                    <th rowspan="2" class="table__cell">Ненорм.</th>
                     <th class="table__cell">Дата приема</th>                    
                 </tr>
                 <tr>
                     <th class="table__cell">Подразделение</th>
 
-                    <th class="table__cell">чч.</th>
+                    <!-- <th class="table__cell">чч.</th>
                     <th class="table__cell">мм.</th>
 
                     <th class="table__cell">чч.</th>
@@ -68,9 +69,9 @@
                     <th class="table__cell">мм.</th>
 
                     <th class="table__cell">чч.</th>
-                    <th class="table__cell">мм.</th>                   
+                    <th class="table__cell">мм.</th>                    -->
 
-                    <th class="table__cell">Ненорм.</th>
+                    
                     <th class="table__cell">Дата увольн.</th>
                 </tr>
             </thead>
@@ -243,6 +244,15 @@
                         <select class="form__select form__select-type-work" id="type_work" required>
                             <option></option>
                         </select>
+                    </td>                    
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form__block">
+                        <label class="form__label" for="is_unnormal">Ненормированный</label>
+                        <input class="form__checkbox" id="is_unnormal" type="checkbox">
+                        </div>
                     </td>
                 </tr>
 

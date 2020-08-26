@@ -7,16 +7,32 @@ export class Api {
         if (!res.ok) {
             return Promise.reject(`Ошибка: ${res.status}`);
         }
-
+        // console.log(res.json())
         return res.json();
     };
+
+    login(email, pass) {
+        return fetch(`${this.options.baseUrl}/users/signin`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                email: email,
+                pass: pass
+            })
+        })
+        .then(res => this._getResponseData(res))
+    }
 
 
     getAllPositions() {
 
         return fetch(`${this.options.baseUrl}/getdata/getallpositions`, {
             credentials: 'include',
-            headers: this.options.headers
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }               
         })
         .then(res => this._getResponseData(res))        
     };
@@ -25,7 +41,10 @@ export class Api {
 
         return fetch(`${this.options.baseUrl}/getdata/getalldepartments`, {
             credentials: 'include',
-            headers: this.options.headers
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }            
         })
         .then(res => this._getResponseData(res))        
     };
@@ -34,7 +53,10 @@ export class Api {
 
         return fetch(`${this.options.baseUrl}/getdata/getallschedules`, {
             credentials: 'include',
-            headers: this.options.headers
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }            
         })
         .then(res => this._getResponseData(res))        
     };
@@ -43,16 +65,22 @@ export class Api {
 
         return fetch(`${this.options.baseUrl}/getdata/getalltypeswork`, {
             credentials: 'include',
-            headers: this.options.headers
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }            
         })
         .then(res => this._getResponseData(res))        
     };
 
-    addStaff(form) {
+    addStaff() {
         return fetch(`${this.options.baseUrl}/staff/add`, {
             method: 'POST',
             credentials: 'include',
-            headers: this.options.headers,
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            },
             body: JSON.stringify({
                 employeeNumber: document.getElementById('employee_number').value,
                 firstName: document.getElementById('first_name').value,

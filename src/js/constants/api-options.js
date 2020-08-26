@@ -5,7 +5,8 @@ import { URL_SERVER } from './server-url.js';
 export const API_OPTIONS = {
     baseUrl: URL_SERVER,
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${localStorage.getItem('token')}`
     }
 };
 

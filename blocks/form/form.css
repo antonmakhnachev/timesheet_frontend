@@ -5,6 +5,7 @@
 @import url("./__link/form__link.css");
 @import url("./__control-icon/form__control-icon.css");
 @import url("./__select/form__select.css");
+@import url("./__checkbox/form__checkbox.css");
 
 .form {
     display: flex;

@@ -52,30 +52,10 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
 
     formNewStaff.addEventListener('submit', () => {
         event.preventDefault();
-        // const birthday = document.getElementById('birthday').value;
-        // console.log(birthday)
 
-        api.addStaff(page)
+        api.addStaff()
             .then(res => console.log(res))
             .catch(err => console.log(err));
-
-        // const employeeNumber = document.getElementById('employee_number');
-        // const firstName = document.getElementById('first_name');
-        // const secondName = document.getElementById('second_name');
-        // const middleName = document.getElementById('middle_name');
-        // const phone = document.getElementById('phone');
-        // const email = document.getElementById('email');
-        // const gender = document.getElementById('gender');
-        // const typeWork = document.getElementById('type_work');
-        // const birthday = document.getElementById('birthday');        
-        // const position = document.getElementById('position');
-        // const department = document.getElementById('department');
-        // const shedule = document.getElementById('shedule');
-
-
-        
-
-
     });
     
 
@@ -94,9 +74,9 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
 
 
     api.getAllPositions()
-        .then((data) => {            
+        .then((data) => {                      
             const input = document.querySelector('.form__select-position');                               
-            fillingReferences.positions(input, data.result)
+            fillingReferences.positions(input, data.result)                        
         })
         .catch(err => console.log(err));
 
