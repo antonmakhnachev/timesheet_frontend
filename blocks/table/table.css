@@ -4,6 +4,7 @@
 @import url("./__data/table__data.css");
 @import url("./__head/table__head.css");
 @import url("./__row/table__row.css");
+@import url("./__body/table__body.css");
 
 .table {
     width: 100%;

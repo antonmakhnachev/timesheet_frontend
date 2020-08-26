@@ -5,6 +5,7 @@ import {MenuControl} from '../js/components/menuControl.js';
 import {PopupControl} from '../js/components/popupControl.js';
 import {GetCurDateTime} from '../js/utils/getCurDateTime.js';
 import {FillingReferences} from '../js/components/fillingReferences.js';
+import {StaffList} from '../js/components/staffList.js';
 import {Api} from '../js/api/api.js';
 
 import {API_OPTIONS} from '../js/constants/api-options.js';
@@ -33,6 +34,7 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
     const popupControl = new PopupControl();
     const getCurDateTime = new GetCurDateTime();
     const fillingReferences = new FillingReferences();
+    const staffList = new StaffList();
 
     menuHidingIcon.addEventListener('click', () => {
         menuControl.hide();        
@@ -98,6 +100,13 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
         .then((data) => {            
             const input = document.querySelector('.form__select-type-work');            
             fillingReferences.typesWork(input, data.result)
+        })
+        .catch(err => console.log(err));
+
+    api.getStaffList()
+        .then((data) => {            
+            console.log(data.result)
+            staffList.render(data.result)
         })
         .catch(err => console.log(err));
 

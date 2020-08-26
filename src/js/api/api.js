@@ -98,5 +98,17 @@ export class Api {
         })
         .then(res => this._getResponseData(res))
     }
+
+    getStaffList() {
+
+        return fetch(`${this.options.baseUrl}/getdata/getstafflist`, {
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }               
+        })
+        .then(res => this._getResponseData(res))        
+    };
     
 };
