@@ -3,6 +3,9 @@ console.log('test');
 
 import {MenuControl} from '../js/components/menuControl.js';
 import {PopupControl} from '../js/components/popupControl.js';
+import {Timesheet} from '../js/components/timesheet.js';
+import {Api} from '../js/api/api.js';
+import {API_OPTIONS} from '../js/constants/api-options.js';
 
 
 (function () {
@@ -12,14 +15,18 @@ import {PopupControl} from '../js/components/popupControl.js';
     const menuShowingIcon = document.querySelector('.popup-menu__menu-icon');
     const popups = document.querySelectorAll('.popup');
 
-    const buttonNewDoc = document.querySelector('.timesheet__button');
+    const buttonNewDoc = document.querySelector('.timesheet__button_add-doc');
+    const buttonSetPeriod = document.querySelector('.timesheet__button_set-period');
+
     const formNewDoc = document.forms.form_new_doc;
+    const formSetPeriod = document.forms.form_set_period;
 
 
 
-
+    const api = new Api(API_OPTIONS);
     const menuControl = new MenuControl(menu);
     const popupControl = new PopupControl();
+    const timesheet = new Timesheet();
 
     menuHidingIcon.addEventListener('click', () => {
         menuControl.hide();        
@@ -34,8 +41,47 @@ import {PopupControl} from '../js/components/popupControl.js';
         popupControl.open(popup);
     });
 
+    buttonSetPeriod.addEventListener('click', () => {
+        const popup = formSetPeriod.closest('.popup');
+        popupControl.open(popup);
+    });
 
-    
+
+    formSetPeriod.addEventListener('submit', () => {
+        event.preventDefault();
+        const dateFrom = document.getElementById('period_date_from').value;
+        const dateTo = document.getElementById('period_date_to').value;
+        const popup = formSetPeriod.closest('.popup');        
+
+        Promise.all([
+            api.getTimeSheetCalendar(dateFrom, dateTo),
+            api.getStaffList()            
+        ])
+        .then((data) => {
+            console.log(data)
+            const [ timesheetCalendar, staffList ] = data;
+            // console.log(staffList)
+
+            timesheet.drawHead(timesheetCalendar.timesheetCalendar)
+
+            for (const staff of staffList.staffList) {
+                const number = staffList.staffList.indexOf(staff) + 1;
+                console.log(staff)
+                api.getStaffTimesheet(staff.ID_STAFF, dateFrom, dateTo)
+                    .then((data) => {
+                        timesheet.drawBody(staff, data.staffTimesheet, number);                        
+                    })
+            }
+
+        })       
+        .then(() => {
+            timesheet.setPeriod(dateFrom, dateTo)
+        })
+        .then(() => {
+            popupControl.close(popup);
+        })
+        .catch(err => console.log(err));
+    });
 
 
 

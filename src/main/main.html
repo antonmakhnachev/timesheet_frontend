@@ -32,39 +32,44 @@
         <div class="timesheet">
             <h2 class="timesheet__title">Табель учета рабочего времени</h2>
             <p class="timesheet__period">за период с 1 Августа 2020 г. по 15 Августа 2020 г.</p>
-            <button class="button timesheet__button">Добавить документ</button>
+
+            <div class="button-block">
+                <button class="button timesheet__button timesheet__button_set-period">Изменить период</button>
+                <button class="button timesheet__button timesheet__button_add-doc">Добавить документ</button>
+            </div>
 
             <table class="table">
                 <thead class="table__head">
-                    <tr>
+                    <tr class="table__row_head-first">
                         <th rowspan="2" class="table__cell">№</th>
                         <th rowspan="2" class="table__cell">Таб. номер</th>
                         <th rowspan="2" class="table__cell">Сотрудник</th>                        
-                        <th class="table__cell">1</th>
+                        <!-- <th class="table__cell">1</th>
                         <th class="table__cell">2</th>
-                        <th class="table__cell">3</th>
+                        <th class="table__cell">3</th> -->
                         
 
-                        <th class="table__cell">Итого за 1 половину</th>                        
-                        <th rowspan="2" class="table__cell">Итого за Август 2020</th>
+                        <!-- <th class="table__cell">Итого за 1 половину</th>                        
+                        <th rowspan="2" class="table__cell">Итого за Август 2020</th> -->
 
                         
                     </tr>
-                    <tr>                                               
-                        <th class="table__cell">1</th>
-                        <th class="table__cell">2</th>
-                        <th class="table__cell">3</th>
+                    <tr class="table__row_head-second">                                               
+                        <!-- <th class="table__cell">16</th>
+                        <th class="table__cell">17</th>
+                        <th class="table__cell">18</th> -->
                         
 
-                        <th class="table__cell">Итого за 2 половину</th>
+                        <!-- <th class="table__cell">Итого за 2 половину</th> -->
 
                     </tr>
                 </thead>
 
-                <tbody class="table__content">
+                <tbody class="table__body">
 
-                    <tr class="table__row">
-                        <td rowspan="2" class="table__cell table__caption">1.</td>
+                    <tr class="table__row table__row_body-first">
+
+                        <!-- <td rowspan="2" class="table__cell table__caption">1.</td>
                         <td rowspan="2" class="table__cell table__caption">000001</td>
                         <td rowspan="2" class="table__cell table__caption">Иванов Иван Иванович</td>
 
@@ -74,15 +79,16 @@
                         
 
                         <td class="table__cell table__data">9 дн. / 72 ч.</td>
-                        <td rowspan="2" class="table__cell table__data">18 дн. / 144 ч.</td>
+                        <td rowspan="2" class="table__cell table__data">18 дн. / 144 ч.</td> -->
+
                     </tr>
-                    <tr class="table__row">
-                        <td class="table__cell table__data">Я8</td>
+                    <tr class="table__row table__row_body-second">
+                        <!-- <td class="table__cell table__data">Я8</td>
                         <td class="table__cell table__data">Я8</td>
                         <td class="table__cell table__data">Я8</td>
                         
                         
-                        <td class="table__cell table__data">9 дн. / 72 ч.</td>
+                        <td class="table__cell table__data">9 дн. / 72 ч.</td> -->
                     </tr>
 
                     
@@ -203,6 +209,35 @@
                     <input type="date" class="form__input form__input_date" id="doc_date_to">
                 <!-- </div> -->
                 <button class="form__button button">Добавить</button>
+                
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="popup">
+        <div class="popup__content popup__content_form-set-period">
+            <h2 class="popup__title">Период отчета</h2>
+            <img class="popup__close-icon" src="../../images/icon_close_blue.png" alt="Image error">
+            <form action="" class="form" name="form_set_period" novalidate>               
+
+                <div class="form__block">
+                    <label for="period_date_from" class="form__label">Дата начала:</label>
+                    <input type="date" class="form__input form__input_date" id="period_date_from" required>
+                    
+                </div>
+
+                <div class="form__block">
+                    <label for="period_date_to" class="form__label">Дата окончания:</label>
+                    <input type="date" class="form__input form__input_date" id="period_date_to" required>
+                </div>
+                <button class="form__button button">Изменить</button>
                 
 
             </form>

@@ -2,3 +2,7 @@
     border: 1px #000000 solid;
     padding-left: 3px;
 }
+
+.table__cell_red {
+    color: red;
+}

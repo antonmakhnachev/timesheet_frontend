@@ -110,5 +110,29 @@ export class Api {
         })
         .then(res => this._getResponseData(res))        
     };
+
+    getTimeSheetCalendar(dateFrom, dateTo) {
+
+        return fetch(`${this.options.baseUrl}/getdata/gettimesheetcalendar/${dateFrom}&${dateTo}`, {
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }               
+        })
+        .then(res => this._getResponseData(res))        
+    };
+
+    getStaffTimesheet(staffId, dateFrom, dateTo) {
+
+        return fetch(`${this.options.baseUrl}/getdata/getstafftimesheet/${staffId}&${dateFrom}&${dateTo}`, {
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }               
+        })
+        .then(res => this._getResponseData(res))        
+    };
     
 };
