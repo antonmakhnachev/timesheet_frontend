@@ -7,9 +7,9 @@ export class Timesheet {
 
         for (const item of items) {
             if (item.IS_WORKDAY === 1) {
-                classCell = 'table__cell'
+                classCell = 'table__cell table__cell_days'
             } else {
-                classCell =' table__cell table__cell_red'
+                classCell =' table__cell table__cell_days table__cell_red'
             }
 
             if (items.indexOf(item) <= 14) {
@@ -68,7 +68,7 @@ export class Timesheet {
                 }
 
                 rowBodyFirst.insertAdjacentHTML('beforeend', `
-                    <td class="table__cell table__data">${item.INCIDENT_CODE_CHAR}${workTime}</td>            
+                    <td class="table__cell table__cell_days table__data">${item.INCIDENT_CODE_CHAR}${workTime}</td>            
                 `)
             } else {
                 if (item.INCIDENT_CODE_CHAR === 'Я') {
@@ -77,7 +77,7 @@ export class Timesheet {
                 }
 
                 rowBodySecond.insertAdjacentHTML('beforeend', `
-                    <td class="table__cell table__data">${item.INCIDENT_CODE_CHAR}${workTime}</td>            
+                    <td class="table__cell table__cell_days table__data">${item.INCIDENT_CODE_CHAR}${workTime}</td>            
                 `)
             }
             

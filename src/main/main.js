@@ -4,6 +4,8 @@ console.log('test');
 import {MenuControl} from '../js/components/menuControl.js';
 import {PopupControl} from '../js/components/popupControl.js';
 import {Timesheet} from '../js/components/timesheet.js';
+import {User} from '../js/components/user.js'
+import {GetCurDateTime} from '../js/utils/getCurDateTime.js';
 import {Api} from '../js/api/api.js';
 import {API_OPTIONS} from '../js/constants/api-options.js';
 
@@ -14,6 +16,7 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
     const menuHidingIcon = document.querySelector('.popup-menu__close-icon');
     const menuShowingIcon = document.querySelector('.popup-menu__menu-icon');
     const popups = document.querySelectorAll('.popup');
+    const curDate = document.querySelector('.date');
 
     const buttonNewDoc = document.querySelector('.timesheet__button_add-doc');
     const buttonSetPeriod = document.querySelector('.timesheet__button_set-period');
@@ -27,6 +30,8 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
     const menuControl = new MenuControl(menu);
     const popupControl = new PopupControl();
     const timesheet = new Timesheet();
+    const getCurDateTime = new GetCurDateTime();
+    const user = new User(localStorage.getItem('firstName'), localStorage.getItem('secondName'));
 
     menuHidingIcon.addEventListener('click', () => {
         menuControl.hide();        
@@ -100,6 +105,8 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
 
 
     menuControl.open(menu);
+    user.isAuth();
+    curDate.textContent = `Сегодня: ${getCurDateTime.getCurDate()}`;
 
 
 

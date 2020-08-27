@@ -6,6 +6,7 @@ import {PopupControl} from '../js/components/popupControl.js';
 import {GetCurDateTime} from '../js/utils/getCurDateTime.js';
 import {FillingReferences} from '../js/components/fillingReferences.js';
 import {StaffList} from '../js/components/staffList.js';
+import {User} from '../js/components/user.js'
 import {Api} from '../js/api/api.js';
 
 import {API_OPTIONS} from '../js/constants/api-options.js';
@@ -35,6 +36,7 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
     const getCurDateTime = new GetCurDateTime();
     const fillingReferences = new FillingReferences();
     const staffList = new StaffList();
+    const user = new User(localStorage.getItem('firstName'), localStorage.getItem('secondName'));
 
     menuHidingIcon.addEventListener('click', () => {
         menuControl.hide();        
@@ -113,6 +115,7 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
 
 
     menuControl.open(menu);
+    user.isAuth();
     curDate.textContent = `Сегодня: ${getCurDateTime.getCurDate()}`;
     
 

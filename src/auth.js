@@ -1,6 +1,7 @@
 //import './auth.css';
 
 import {Api} from './js/api/api.js';
+import {LocalStorageControl} from './js/utils/LocalStorageControl.js'
 import {API_OPTIONS} from './js/constants/api-options.js';
 
 (function() {
@@ -8,6 +9,7 @@ import {API_OPTIONS} from './js/constants/api-options.js';
     const formAuth = document.forms.form_auth;
 
     const api = new Api(API_OPTIONS);
+    const localStorageControl = new LocalStorageControl();
 
     formAuth.addEventListener('submit', () => {
         event.preventDefault();
@@ -20,8 +22,15 @@ import {API_OPTIONS} from './js/constants/api-options.js';
 
         api.login(email.value, pass.value)
             // .then((res) => console.log(res))
-            .then(res => localStorage.setItem('token', res.token))
-            .then(() => console.log(localStorage.getItem('token')))
+            .then((res) => {
+                localStorageControl.setLocalstorage(res.token, res.userFirstName, res.userSecondName)
+                // localStorage.setItem('token', res.token)
+            })
+            .then(() => {
+                console.log(localStorage.getItem('token'))
+                console.log(localStorage.getItem('firstName'))
+                console.log(localStorage.getItem('secondName'))
+            })
             .catch(err => console.log({ err }));
     });
 
