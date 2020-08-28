@@ -77,7 +77,7 @@
 
 
 
-
+        <!-- меню -->
         <nav class="popup-menu">
 
                 <div class="popup-menu__head">
@@ -93,9 +93,16 @@
 
                     <ul class="popup-menu__items">
                         <li class="popup-menu__item">
-                            <a class="popup-menu__link" href="">
+                            <a class="popup-menu__link" href="../main/main.html">
                                 <img class="popup-menu__icon" src="../../images/icon_timesheet_white.png" alt="Image error" title="Табель">
                                 <span class="popup-menu__text">Табель</span>                                
+                            </a>
+                            <hr class="popup-menu__line">
+                        </li> 
+                        <li class="popup-menu__item">
+                            <a class="popup-menu__link" href="../staff/staff.html">
+                                <img class="popup-menu__icon" src="../../images/icon_staff_white.png" alt="Image error" title="Сотрудники">
+                                <span class="popup-menu__text">Сотрудники</span>                                
                             </a>
                             <hr class="popup-menu__line">
                         </li>                    
@@ -106,7 +113,7 @@
                             </a>
                             <hr class="popup-menu__line">                            
                         </li>
-                        <li class="popup-menu__item">
+                        <!-- <li class="popup-menu__item">
                             <a class="popup-menu__link" href="">
                                 <img class="popup-menu__icon" src="../../images/icon_info_white.png" alt="Image error" title="Общая информация">
                                 <span class="popup-menu__text">Общая информация</span>                                                            
@@ -116,10 +123,10 @@
                         <li class="popup-menu__item">
                             <a class="popup-menu__link" href="">
                                 <img class="popup-menu__icon" src="../../images/icon_calendar_white.png" alt="Image error" title="Календарный план">
-                                <span class="popup-menu__text">Календарный план</span>                                
+                                <span class="popup-menu__text">Производственный календарь</span>                                
                             </a>
                             <hr class="popup-menu__line">
-                        </li>
+                        </li> -->
                     </ul>        
 
                     <ul class="popup-menu__items">
@@ -144,6 +151,7 @@
 
     </section>
 
+    <!-- форма добавления нового сотрудника -->
     <div class="popup">
         <div class="popup__content popup__content_form-new-staff">
             <h2 class="popup__title">Новый сотрудник</h2>
@@ -165,10 +173,7 @@
                     <td>
                         <label class="form__label" for="first_name">Имя</label>
                         <input class="form__input" id="first_name" required>
-                    </td>
-
-                    
-                   
+                    </td>                  
                 </tr>
                 
                 <tr>
@@ -246,22 +251,27 @@
                         </div>
                     </td>
                 </tr>
-
-
-            </table>
-
-                
-
-                
+            </table>                
                 <button class="form__button button">Добавить</button>
-
-                
-
             </form>
-
         </div>
-
     </div>
+
+
+    <!-- форма добавления нового графика работы -->
+
+    
+
+
+
+
+
+
+
+
+
+
+
     
     <script type="module" src="./staff.js"></script>
 </body>

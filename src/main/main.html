@@ -112,7 +112,7 @@
 
 
 
-
+        <!-- меню -->
         <nav class="popup-menu">
 
                 <div class="popup-menu__head">
@@ -128,12 +128,19 @@
 
                     <ul class="popup-menu__items">
                         <li class="popup-menu__item">
-                            <a class="popup-menu__link" href="">
+                            <a class="popup-menu__link" href="../main/main.html">
                                 <img class="popup-menu__icon" src="../../images/icon_timesheet_white.png" alt="Image error" title="Табель">
                                 <span class="popup-menu__text">Табель</span>                                
                             </a>
                             <hr class="popup-menu__line">
-                        </li>                    
+                        </li>
+                        <li class="popup-menu__item">
+                            <a class="popup-menu__link" href="../staff/staff.html">
+                                <img class="popup-menu__icon" src="../../images/icon_staff_white.png" alt="Image error" title="Сотрудники">
+                                <span class="popup-menu__text">Сотрудники</span>                                
+                            </a>
+                            <hr class="popup-menu__line">
+                        </li>                      
                         <li class="popup-menu__item">
                             <a class="popup-menu__link" href="">
                                 <img class="popup-menu__icon" src="../../images/icon_report_white.png" alt="Image error" title="Отчеты">
@@ -141,7 +148,7 @@
                             </a>
                             <hr class="popup-menu__line">                            
                         </li>
-                        <li class="popup-menu__item">
+                        <!-- <li class="popup-menu__item">
                             <a class="popup-menu__link" href="">
                                 <img class="popup-menu__icon" src="../../images/icon_info_white.png" alt="Image error" title="Общая информация">
                                 <span class="popup-menu__text">Общая информация</span>                                                            
@@ -151,10 +158,10 @@
                         <li class="popup-menu__item">
                             <a class="popup-menu__link" href="">
                                 <img class="popup-menu__icon" src="../../images/icon_calendar_white.png" alt="Image error" title="Календарный план">
-                                <span class="popup-menu__text">Календарный план</span>                                
+                                <span class="popup-menu__text">Производственный календарь</span>                                
                             </a>
                             <hr class="popup-menu__line">
-                        </li>
+                        </li> -->
                     </ul>        
 
                     <ul class="popup-menu__items">
@@ -178,49 +185,41 @@
         </nav>
     </section>
 
+
+    <!-- форма добавления нового документа -->
     <div class="popup">
         <div class="popup__content popup__content_form-new-doc">
             <h2 class="popup__title">Новый документ</h2>
             <img class="popup__close-icon" src="../../images/icon_close_blue.png" alt="Image error">
             <form action="" class="form" name="form_new_doc">
-                <!-- <div class="form__block"> -->
+                
                     <label for="doc_staff" class="form__label">Сотрудник:</label>
                     <select class="form__input" id="doc_staff">
                         <option value="">Иванов Иван Иванович</option>
                     </select>
-                <!-- </div> -->
-
-                <!-- <div class="form__block"> -->
+                
                     <label for="doc_type" class="form__label">Документ:</label>
                     <select class="form__input" id="doc_type">
                         <option value="">dddd</option>
                         <option value="">fffff</option>
                     </select>
-                <!-- </div> -->
-
-                <!-- <div class="form__block"> -->
+                
                     <label for="doc_date_from" class="form__label">Дата начала:</label>
                     <input type="date" class="form__input form__input_date" id="doc_date_from">
                     
-                <!-- </div> -->
-
-                <!-- <div class="form__block"> -->
+                
                     <label for="doc_date_to" class="form__label">Дата окончания:</label>
                     <input type="date" class="form__input form__input_date" id="doc_date_to">
-                <!-- </div> -->
-                <button class="form__button button">Добавить</button>
                 
-
+                <button class="form__button button">Добавить</button>
             </form>
-
         </div>
-
     </div>
 
 
 
 
-
+    <!-- форма изменения отчетного периода -->
     <div class="popup">
         <div class="popup__content popup__content_form-set-period">
             <h2 class="popup__title">Период отчета</h2>
@@ -238,12 +237,8 @@
                     <input type="date" class="form__input form__input_date" id="period_date_to" required>
                 </div>
                 <button class="form__button button">Изменить</button>
-                
-
             </form>
-
         </div>
-
     </div>
     
     <script type="module" src="main.js"></script>

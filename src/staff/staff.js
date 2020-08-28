@@ -107,8 +107,8 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
 
     api.getStaffList()
         .then((data) => {            
-            console.log(data.result)
-            staffList.render(data.result)
+            console.log(data.staffList)
+            staffList.render(data.staffList)
         })
         .catch(err => console.log(err));
 
