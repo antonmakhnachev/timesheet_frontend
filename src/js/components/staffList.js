@@ -3,8 +3,8 @@ export class StaffList {
     createList(item, num) {
         const tableData = document.querySelector('.table__body');
         const isUnnormal = item.IS_UNNORMAL === 0 ? 'Нет' : 'Да';
-        const dateBeginningWork = item.DATE_BEGINNING_WORK === null ? 'Нет данных' : item.DATE_BEGINNING_WORK;
-        const dateEndingWork = item.DATE_ENDING_WORK === null ? 'Нет данных' : item.DATE_ENDING_WORK;
+        const dateBeginningWork = item.DATE_BEGINNING_WORK === null ? 'Нет данных' : item.DATE_BEGINNING_WORK.slice(0,10);
+        const dateEndingWork = item.DATE_ENDING_WORK === null ? 'Нет данных' : item.DATE_ENDING_WORK.slice(0,10);
         
 
         tableData.insertAdjacentHTML('beforeend', `

@@ -251,16 +251,86 @@
                         </div>
                     </td>
                 </tr>
-            </table>                
-                <button class="form__button button">Добавить</button>
+            </table>
+                <div class="form__block">                
+                    <button class="form__button button button-add-staff">Добавить</button>
+                    <button class="form__button button button-new-schedule">Добавить график</button>
+                </div>
             </form>
         </div>
     </div>
 
 
     <!-- форма добавления нового графика работы -->
+    <div class="popup">
+        <div class="popup__content popup__content_form-new-schedule">
+            <h2 class="popup__title">Новый график</h2>
+            <img class="popup__close-icon" src="../../images/icon_close_blue.png" alt="Image error">
+            <form action="" class="form" name="form_new_schedule" novalidate>
+                
+                <label class="form__label" for="schedule_name">Наименование</label>
+                <input class="form__input" id="schedule_name" required>
 
-    
+                <div class="form__block">
+                    <label for="period_date_from" class="form__label">Дата начала:</label>
+                    <input type="date" class="form__input form__input_date" id="period_date_from" required>
+                    
+                </div>
+
+                <div class="form__block">
+                    <label for="period_date_to" class="form__label">Дата окончания:</label>
+                    <input type="date" class="form__input form__input_date" id="period_date_to" required>
+                </div>
+
+                <!-- <div class="form__block"> -->
+                <!-- <p class="form__label">Начало рабочего дня</p> -->
+                <div class="form__block">
+                    <label for="period_date_to" class="form__label">Начало раб. дня</label>
+                    <input type="time" class="form__input form__input_date" id="start_day_time" required>
+                </div>
+                <div class="form__block">
+                    <label for="period_date_to" class="form__label">Продолж. раб. дня</label>
+                    <input type="time" class="form__input form__input_date" id="duration_day_time" required>
+                </div>
+
+                <!-- <p class="form__label">Продолжительность рабочего дня</p>
+                <div class="form__block">
+                    <label for="period_date_to" class="form__label">чч:</label>
+                    <input class="form__input form__input_date" id="period_date_to" required>
+                </div>
+                <div class="form__block">
+                    <label for="period_date_to" class="form__label">мм:</label>
+                    <input class="form__input form__input_date" id="period_date_to" required>
+                </div> -->
+
+
+                <!-- </div> -->
+
+
+                <div class="form__block">
+                    <label class="form__label" for="is_unnormal">Ненормированный</label>
+                    <input class="form__checkbox" id="is_unnormal" type="checkbox">
+                </div>
+
+                <div class="form__block">
+                    <label class="form__label" for="is_short">Сокращенный</label>
+                    <input class="form__checkbox" id="is_short" type="checkbox">
+                </div>
+
+                <div class="form__block">
+                    <label class="form__label" for="is_individ">Индивидуальный</label>
+                    <input class="form__checkbox" id="is_individ" type="checkbox">
+                </div>
+
+                <div class="schedule schedule_week">
+                    <!-- <div class="schedule__day">
+                        <p class="schedule__text">1</p>
+                    </div> -->
+                </div>               
+                <button class="form__button button button-add-schedule">Изменить</button>
+            </form>
+        </div>
+    </div>
 
 
 

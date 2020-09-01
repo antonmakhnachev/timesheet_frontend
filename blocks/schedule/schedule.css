@@ -1,0 +1,17 @@
+@import url("./__day/schedule__day.css");
+@import url("./__text/schedule__text.css");
+
+.schedule {
+    display: grid;    
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    margin-bottom: 10px;    
+}
+
+.schedule_week {
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.schedule_month {
+    grid-template-columns: repeat(10, 1fr);
+}

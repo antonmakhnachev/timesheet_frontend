@@ -7,6 +7,7 @@ import {GetCurDateTime} from '../js/utils/getCurDateTime.js';
 import {FillingReferences} from '../js/components/fillingReferences.js';
 import {StaffList} from '../js/components/staffList.js';
 import {User} from '../js/components/user.js'
+import {Schedule} from '../js/components/schedule.js'
 import {Api} from '../js/api/api.js';
 
 import {API_OPTIONS} from '../js/constants/api-options.js';
@@ -26,6 +27,8 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
 
     const buttonNewStaff = document.querySelector('.staff-content__button');
     const formNewStaff = document.forms.form_new_staff;
+
+    
     
 
 
@@ -37,6 +40,7 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
     const fillingReferences = new FillingReferences();
     const staffList = new StaffList();
     const user = new User(localStorage.getItem('firstName'), localStorage.getItem('secondName'));
+    const schedule = new Schedule(api);
 
     menuHidingIcon.addEventListener('click', () => {
         menuControl.hide();        
@@ -47,20 +51,75 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
     });
 
     
-
+    // форма добавления нового сотрудника
     buttonNewStaff.addEventListener('click', () => {
         const popup = formNewStaff.closest('.popup');
+        const buttonAddStaff = popup.querySelector('.button-add-staff');
+        const buttonNewSchedule = popup.querySelector('.button-new-schedule');
+        const inputPos = popup.querySelector('.form__select-position');
+        const inputDep = popup.querySelector('.form__select-department');
+        const inputSched = popup.querySelector('.form__select-schedule');
+        const inputTypeWork = popup.querySelector('.form__select-type-work');
+        const formNewSchedule = document.forms.form_new_schedule; 
+
+        // заполнение справочника должностей
+        api.getAllPositions()
+            .then(data => fillingReferences.positions(inputPos, data.result))                        
+            .catch(err => console.log(err));
+        
+        // заполнение справочника подразделений
+        api.getAllDepartments()
+            .then(data => fillingReferences.departments(inputDep, data.result))
+            .catch(err => console.log(err));
+
+        // заполнение справочника графиков работы
+        api.getAllSchedules()
+            .then(data => fillingReferences.schedules(inputSched, data.result))
+            .catch(err => console.log(err));
+        
+         // заполнение справочника видов работы
+        api.getAllTypesWork()
+            .then(data => fillingReferences.typesWork(inputTypeWork, data.result))
+            .catch(err => console.log(err));
+
+        // отправка формы
+        buttonAddStaff.addEventListener('click', () => {
+            event.preventDefault();    
+            api.addStaff()
+                .then(res => console.log(res))
+                .catch(err => console.log(err));
+        });
+        
+        // открытие формы для добавления нового графика
+        buttonNewSchedule.addEventListener('click', () => {
+            event.preventDefault();
+            const popup = formNewSchedule.closest('.popup');
+            const isIndivid = document.getElementById('is_individ');
+            const dateFrom = document.getElementById('period_date_from');
+            const dateTo = document.getElementById('period_date_to');
+            const buttonAddSchedule = popup.querySelector('.button-add-schedule');
+            
+            isIndivid.addEventListener('click', () => {
+                schedule.getScheduleDays(dateFrom, dateTo);
+            });
+
+            buttonAddSchedule.addEventListener('click', () => {
+                event.preventDefault();
+                schedule.addSchedule(popup);
+
+            })
+
+            
+
+            schedule.getScheduleDays();
+            popupControl.open(popup);
+        });   
+
         popupControl.open(popup);
     });
 
 
-    formNewStaff.addEventListener('submit', () => {
-        event.preventDefault();
-
-        api.addStaff()
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
-    });
+    
     
 
 
@@ -77,39 +136,16 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
 
 
 
-    api.getAllPositions()
-        .then((data) => {                      
-            const input = document.querySelector('.form__select-position');                               
-            fillingReferences.positions(input, data.result)                        
-        })
-        .catch(err => console.log(err));
+    
 
-    api.getAllDepartments()
-        .then((data) => {            
-            const input = document.querySelector('.form__select-department');            
-            fillingReferences.departments(input, data.result)
-        })
-        .catch(err => console.log(err));
+    
 
-    api.getAllSchedules()
-        .then((data) => {            
-            const input = document.querySelector('.form__select-schedule');            
-            fillingReferences.schedules(input, data.result)
-        })
-        .catch(err => console.log(err));
+    
 
-    api.getAllTypesWork()
-        .then((data) => {            
-            const input = document.querySelector('.form__select-type-work');            
-            fillingReferences.typesWork(input, data.result)
-        })
-        .catch(err => console.log(err));
+    
 
     api.getStaffList()
-        .then((data) => {            
-            console.log(data.staffList)
-            staffList.render(data.staffList)
-        })
+        .then(data => staffList.render(data.staffList))
         .catch(err => console.log(err));
 
 

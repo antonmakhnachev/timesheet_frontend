@@ -31,6 +31,7 @@ import {API_OPTIONS} from './js/constants/api-options.js';
                 console.log(localStorage.getItem('firstName'))
                 console.log(localStorage.getItem('secondName'))
             })
+            .then(() => top.location.href = "./main/main.html")
             .catch(err => console.log({ err }));
     });
 

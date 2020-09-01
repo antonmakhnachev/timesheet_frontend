@@ -134,5 +134,60 @@ export class Api {
         })
         .then(res => this._getResponseData(res))        
     };
+
+    getDaysWeeks() {
+
+        return fetch(`${this.options.baseUrl}/getdata/getdaysweeks`, {
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }               
+        })
+        .then(res => this._getResponseData(res))        
+    };
+
+    addSchedule(scheduleName, dateTo, isUnnormal, isShort, isIndivid) {
+        return fetch(`${this.options.baseUrl}/schedule/add`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({
+                scheduleName,
+                dateTo,
+                isUnnormal,
+                isShort,
+                isIndivid                          
+            })
+        })
+        .then(res => this._getResponseData(res))
+    }
+
+    addScheduleDays(idSchedule, idDay, startDayHours, startDayMinutes, durationDayHours, durationDayMinutes, isWorkday,
+        dateFrom, dateTo) {
+        return fetch(`${this.options.baseUrl}/schedule/adddays`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({
+                idSchedule,                
+                idDay,
+                startDayHours,
+                startDayMinutes,
+                durationDayHours,
+                durationDayMinutes,
+                isWorkday,
+                dateFrom,
+                dateTo                
+            })
+        })
+        .then(res => this._getResponseData(res))
+    }
     
 };

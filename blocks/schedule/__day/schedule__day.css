@@ -1,0 +1,17 @@
+.schedule__day {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border: 1px rgb(0, 83, 140) solid;
+    color: rgb(0, 83, 140);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.schedule__day_is-select {
+    background-color: rgba(0, 83, 140, 1);
+    color: #ffffff;
+}
