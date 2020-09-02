@@ -1,0 +1,16 @@
+.schedule__time {
+    width: 90%;
+    font-size: 11px;
+    border: none;
+        
+    
+}
+
+.schedule__time:focus {
+    outline: none;
+}
+
+.schedule__time_is-select {
+    background-color: rgba(0, 83, 140, 1);
+    color: #ffffff;
+}

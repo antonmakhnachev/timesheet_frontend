@@ -31,6 +31,7 @@ export class Schedule {
             schedule.insertAdjacentHTML('beforeend', `
                 <div class="schedule__day" id="${day.ID_DAY}">
                     <p class="schedule__text">${day.DAY_NAME_SHORT}</p>
+                    <input type="time" class="schedule__time">
                 </div>
             `)
         }
@@ -48,6 +49,7 @@ export class Schedule {
             schedule.insertAdjacentHTML('beforeend', `
                 <div class="schedule__day" id="${day.ID_DATE}">
                     <p class="schedule__text">${day.DATE_NAME_SHORT.slice(0,5)}</p>
+                    <input type="time" class="schedule__time">
                 </div>
             `)
         }
@@ -59,8 +61,11 @@ export class Schedule {
         const arrayDays = schedule.querySelectorAll('.schedule__day');
 
         for (const dayItem of arrayDays) {
-            dayItem.addEventListener('click', () => {
+            const dayDuration = dayItem.querySelector('.schedule__time');
+            const dayName = dayItem.querySelector('.schedule__text');
+            dayName.addEventListener('click', () => {
                 dayItem.classList.toggle('schedule__day_is-select');
+                dayDuration.classList.toggle('schedule__time_is-select');
             })
         }        
     };
@@ -75,8 +80,8 @@ export class Schedule {
         const dateTo = document.getElementById('period_date_to').value || new Date('9999-12-31');        
         const startDayHours = document.getElementById('start_day_time').value.slice(0,2);
         const startDayMinutes = document.getElementById('start_day_time').value.slice(3,5);
-        const durationDayHours = document.getElementById('duration_day_time').value.slice(0,2);
-        const durationDayMinutes = document.getElementById('duration_day_time').value.slice(3,5);
+        let durationDayHours;
+        let durationDayMinutes;
         let isWorkday;
         let idDay;       
 
@@ -92,6 +97,8 @@ export class Schedule {
                     isWorkday = 0;
                 };
                 idDay = day.id;
+                durationDayHours = day.querySelector('.schedule__time').value.slice(0,2) || 0;
+                durationDayMinutes = day.querySelector('.schedule__time').value.slice(3,5) || 0;                
                 this.api.addScheduleDays(idSchedule, idDay, startDayHours, startDayMinutes, durationDayHours, durationDayMinutes,
                     isWorkday, dateFrom, dateTo)
                 .then((result) => console.log(result))

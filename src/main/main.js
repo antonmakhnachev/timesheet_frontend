@@ -6,6 +6,7 @@ import {PopupControl} from '../js/components/popupControl.js';
 import {Timesheet} from '../js/components/timesheet.js';
 import {User} from '../js/components/user.js'
 import {GetCurDateTime} from '../js/utils/getCurDateTime.js';
+import {FillingReferences} from '../js/components/fillingReferences.js';
 import {Api} from '../js/api/api.js';
 import {API_OPTIONS} from '../js/constants/api-options.js';
 
@@ -31,6 +32,7 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
     const popupControl = new PopupControl();
     const timesheet = new Timesheet();
     const getCurDateTime = new GetCurDateTime();
+    const fillingReferences = new FillingReferences();
     const user = new User(localStorage.getItem('firstName'), localStorage.getItem('secondName'));
 
     menuHidingIcon.addEventListener('click', () => {
@@ -43,6 +45,19 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
 
     buttonNewDoc.addEventListener('click', () => {
         const popup = formNewDoc.closest('.popup');
+        const selectStaff = popup.querySelector('.form__select-staff');
+        const selectDocument = popup.querySelector('.form__select-document');
+
+        // заполнение справочника сотрудников
+        api.getStaffList()            
+            .then(data => fillingReferences.staff(selectStaff, data.staffList))                        
+            .catch(err => console.log(err));
+        
+            // заполнение справочника инцидентов
+        api.getAllIncidents()
+            .then(data => fillingReferences.incidents(selectDocument, data.result))
+            .catch(err => console.log(err));
+
         popupControl.open(popup);
     });
 

@@ -84,7 +84,7 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
 
         // отправка формы
         buttonAddStaff.addEventListener('click', () => {
-            event.preventDefault();    
+            event.preventDefault();            
             api.addStaff()
                 .then(res => console.log(res))
                 .catch(err => console.log(err));
@@ -105,7 +105,14 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
 
             buttonAddSchedule.addEventListener('click', () => {
                 event.preventDefault();
-                schedule.addSchedule(popup);
+                schedule.addSchedule(popup)
+                
+                // обновление справочника графиков работы
+                api.getAllSchedules()
+                .then(data => fillingReferences.schedules(inputSched, data.result))
+                .catch(err => console.log(err));                
+                
+                popupControl.close(popup);
 
             })
 

@@ -61,6 +61,18 @@ export class Api {
         .then(res => this._getResponseData(res))        
     };
 
+    getAllIncidents() {
+
+        return fetch(`${this.options.baseUrl}/getdata/getallincidents`, {
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }            
+        })
+        .then(res => this._getResponseData(res))        
+    };
+
     getAllTypesWork() {
 
         return fetch(`${this.options.baseUrl}/getdata/getalltypeswork`, {
@@ -89,11 +101,12 @@ export class Api {
                 phone: document.getElementById('phone').value,
                 email: document.getElementById('email').value,
                 gender: document.getElementById('gender').value,
-                typeWork: document.getElementById('type_work').value,
+                idTypeWork: document.getElementById('type_work').value,
                 birthday: document.getElementById('birthday').value,      
-                position: document.getElementById('position').value,
-                department: document.getElementById('department').value,
-                schedule: document.getElementById('schedule').value
+                idPosition: document.getElementById('position').value,
+                idDepartment: document.getElementById('department').value,
+                idSchedule: document.getElementById('schedule').value,
+                dateBeginningWork: document.getElementById('date_beginning_work').value
             })
         })
         .then(res => this._getResponseData(res))

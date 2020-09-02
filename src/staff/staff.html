@@ -164,6 +164,12 @@
                         <label class="form__label" for="employee_number">Табельный номер</label>
                         <input class="form__input" id="employee_number" required>
                     </td>
+
+                    <td>
+                        <label class="form__label" for="date_beginning_work">Дата начала работы</label>
+                        <input class="form__input" id="date_beginning_work" type="date">
+                    </td>
+
                 </tr>
                 <tr>
                     <td>
@@ -243,14 +249,14 @@
                     </td>                    
                 </tr>
 
-                <tr>
+                <!-- <tr>
                     <td>
                         <div class="form__block">
                         <label class="form__label" for="is_unnormal">Ненормированный</label>
                         <input class="form__checkbox" id="is_unnormal" type="checkbox">
                         </div>
                     </td>
-                </tr>
+                </tr> -->
             </table>
                 <div class="form__block">                
                     <button class="form__button button button-add-staff">Добавить</button>
@@ -288,10 +294,10 @@
                     <label for="period_date_to" class="form__label">Начало раб. дня</label>
                     <input type="time" class="form__input form__input_date" id="start_day_time" required>
                 </div>
-                <div class="form__block">
+                <!-- <div class="form__block">
                     <label for="period_date_to" class="form__label">Продолж. раб. дня</label>
                     <input type="time" class="form__input form__input_date" id="duration_day_time" required>
-                </div>
+                </div> -->
 
                 <!-- <p class="form__label">Продолжительность рабочего дня</p>
                 <div class="form__block">
@@ -325,9 +331,10 @@
                 <div class="schedule schedule_week">
                     <!-- <div class="schedule__day">
                         <p class="schedule__text">1</p>
+                        <input type="time" class="schedule__time">
                     </div> -->
                 </div>               
-                <button class="form__button button button-add-schedule">Изменить</button>
+                <button class="form__button button button-add-schedule">Добавить</button>
             </form>
         </div>
     </div>

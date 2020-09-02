@@ -1,5 +1,6 @@
 @import url("./__day/schedule__day.css");
 @import url("./__text/schedule__text.css");
+@import url("./__time/schedule__time.css");
 
 .schedule {
     display: grid;    

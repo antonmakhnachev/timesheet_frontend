@@ -25,6 +25,18 @@ export class FillingReferences {
         }      
     };
 
+    staff(input, items) {        
+        for (const item of items) {
+            input.insertAdjacentHTML('beforeend', `<option value=${item.ID_STAFF}>${item.STAFF_NAME}</option>`);
+        }      
+    };
+
+    incidents(input, items) {        
+        for (const item of items) {
+            input.insertAdjacentHTML('beforeend', `<option value=${item.ID_INCIDENT}>${item.INCIDENT_NAME}</option>`);
+        }      
+    };
+
 
 
 
