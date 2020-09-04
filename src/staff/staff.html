@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="description" content="">
-        <link rel="stylesheet" href ="./staff.css">
+        <link rel="stylesheet" href ="<%=htmlWebpackPlugin.files.chunks.staff.css%>">
         <title>Табель: Сотрудники</title>
     </head>
 <body class="page">
@@ -358,6 +358,6 @@
 
 
     
-    <script type="module" src="./staff.js"></script>
+    <script type="module" src="<%= htmlWebpackPlugin.files.chunks.staff.entry %>"></script>
 </body>
 </html>

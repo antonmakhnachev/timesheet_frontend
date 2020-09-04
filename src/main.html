@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="description" content="">
-        <link rel="stylesheet" href ="./auth.css">
-        <title>Табель учета рабочего времени</title>
+        <link rel="stylesheet" href ="<%=htmlWebpackPlugin.files.chunks.main.css %>">
+        <title>Табель: Авторизация</title>
     </head>
 <body class="page">
 
@@ -33,6 +33,6 @@
     </div>
 
 
-    <script type="module" src="./auth.js"></script>
+    <script type="module" src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </body>
 </html>

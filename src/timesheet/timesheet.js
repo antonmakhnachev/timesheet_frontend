@@ -1,5 +1,4 @@
-// import './main.css';
-console.log('test');
+import './timesheet.css';
 
 import {MenuControl} from '../js/components/menuControl.js';
 import {PopupControl} from '../js/components/popupControl.js';
@@ -9,6 +8,7 @@ import {GetCurDateTime} from '../js/utils/getCurDateTime.js';
 import {FillingReferences} from '../js/components/fillingReferences.js';
 import {Api} from '../js/api/api.js';
 import {API_OPTIONS} from '../js/constants/api-options.js';
+import {MONTHS, DAYS} from '../js/constants/arrays.js'
 
 
 (function () {
@@ -31,7 +31,7 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
     const menuControl = new MenuControl(menu);
     const popupControl = new PopupControl();
     const timesheet = new Timesheet();
-    const getCurDateTime = new GetCurDateTime();
+    const getCurDateTime = new GetCurDateTime(MONTHS, DAYS);
     const fillingReferences = new FillingReferences();
     const user = new User(localStorage.getItem('firstName'), localStorage.getItem('secondName'));
 

@@ -1,5 +1,4 @@
-//import './staff.css';
-// console.log(process.env);
+import './staff.css';
 
 import {MenuControl} from '../js/components/menuControl.js';
 import {PopupControl} from '../js/components/popupControl.js';
@@ -12,6 +11,7 @@ import {InfoMessage} from '../js/components/infoMessage.js';
 import {Api} from '../js/api/api.js';
 
 import {API_OPTIONS} from '../js/constants/api-options.js';
+import {MONTHS, DAYS} from '../js/constants/arrays.js'
 
 
 (function () {
@@ -37,7 +37,7 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
     const api = new Api(API_OPTIONS);
     const menuControl = new MenuControl(menu);
     const popupControl = new PopupControl();
-    const getCurDateTime = new GetCurDateTime();
+    const getCurDateTime = new GetCurDateTime(MONTHS, DAYS);
     const fillingReferences = new FillingReferences();
     const staffList = new StaffList();
     const user = new User(localStorage.getItem('firstName'), localStorage.getItem('secondName'));

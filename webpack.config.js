@@ -9,10 +9,14 @@ const execFile = require('child_process').execFile;
 const pngquant = require('pngquant-bin');
 const imagemin = require('imagemin');
 const imageminPngquant = require('imagemin-pngquant');
+const { resolve } = require('path');
 const pngquantExec = execFile(pngquant, ['-o', 'output.png', 'input.png']);
 module.exports = {
-  entry: {auth: './src/auth.js',
-          main: './src/main/main.js'},
+  entry: { 
+          main: __dirname + '/src/main.js',
+          timesheet: __dirname + '/src/timesheet/timesheet.js',
+          staff: __dirname + '/src/staff/staff.js'
+        },
   output: {
     path: path.resolve (__dirname, 'dist'),
     filename: '[name].[chunkhash].js',
@@ -65,13 +69,18 @@ module.exports = {
     }),
     new HtmlWebpackPlugin ({
       inject: false,
-      template: './src/auth.html',
-      filename: 'auth.html',
+      template: __dirname + '/src/main.html',
+      // filename: 'auth.html',
     }),
     new HtmlWebpackPlugin ({
       inject: false,
-      template: './src/main/main.html',
-      filename: 'main.html',
+      template: __dirname + '/src/timesheet/timesheet.html',
+      // filename: 'main.html',
+    }),
+    new HtmlWebpackPlugin ({
+      inject: false,
+      template: __dirname + '/src/staff/staff.html',
+      // filename: 'staff.html',
     }),
     new webpack.DefinePlugin ({
       NODE_ENV: JSON.stringify (process.env.NODE_ENV),

@@ -1,4 +1,4 @@
-//import './auth.css';
+import './main.css';
 
 import {Api} from './js/api/api.js';
 import {LocalStorageControl} from './js/utils/LocalStorageControl.js'
