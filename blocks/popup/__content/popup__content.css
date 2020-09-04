@@ -2,6 +2,7 @@
 @import url("./_form-new-doc/popup__content_form-new-doc.css");
 @import url("./_form-new-staff/popup__content_form-new-staff.css");
 @import url("./_form-new-schedule/popup__content_form-new-schedule.css");
+@import url("./_message/popup__content_message.css");
 
 .popup__content {
     position: relative;    

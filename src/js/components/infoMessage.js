@@ -1,10 +1,13 @@
 export class InfoMessage {
-    constructor(message, popup) {
-        this.message = message;
-        this.popup = popup;
+    constructor( popupControl) {        
+        this.popupControl = popupControl;
     }
 
-    show() {
-        
+    show(message) {
+        const messagePlace = document.querySelector('.popup__content_message');
+        const popup = messagePlace.closest('.popup');
+        messagePlace.insertAdjacentHTML('beforeend', `<p>${message}</p>`)
+        this.popupControl.open(popup);
+
     }
 }

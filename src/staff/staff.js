@@ -8,6 +8,7 @@ import {FillingReferences} from '../js/components/fillingReferences.js';
 import {StaffList} from '../js/components/staffList.js';
 import {User} from '../js/components/user.js'
 import {Schedule} from '../js/components/schedule.js'
+import {InfoMessage} from '../js/components/infoMessage.js';
 import {Api} from '../js/api/api.js';
 
 import {API_OPTIONS} from '../js/constants/api-options.js';
@@ -40,7 +41,8 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
     const fillingReferences = new FillingReferences();
     const staffList = new StaffList();
     const user = new User(localStorage.getItem('firstName'), localStorage.getItem('secondName'));
-    const schedule = new Schedule(api);
+    const schedule = new Schedule(api, getCurDateTime);
+    const infoMessage = new InfoMessage(popupControl);
 
     menuHidingIcon.addEventListener('click', () => {
         menuControl.hide();        
@@ -86,7 +88,8 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
         buttonAddStaff.addEventListener('click', () => {
             event.preventDefault();            
             api.addStaff()
-                .then(res => console.log(res))
+                // .then(() => infoMessage.show('Сотрудник добавлен'))
+                // .then(() => formNewStaff.reset())
                 .catch(err => console.log(err));
         });
         
@@ -110,24 +113,17 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
                 // обновление справочника графиков работы
                 api.getAllSchedules()
                 .then(data => fillingReferences.schedules(inputSched, data.result))
+                // .then(() => infoMessage.show('График добавлен'))
+                // .then(() => formNewSchedule.reset())
                 .catch(err => console.log(err));                
                 
                 popupControl.close(popup);
-
-            })
-
-            
-
+            });
             schedule.getScheduleDays();
             popupControl.open(popup);
-        });   
-
+        });
         popupControl.open(popup);
-    });
-
-
-    
-    
+    });   
 
 
 
@@ -138,17 +134,6 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
             popupControl.close(popup);
         });
     };
-
-
-
-
-
-    
-
-    
-
-    
-
     
 
     api.getStaffList()
@@ -160,16 +145,6 @@ import {API_OPTIONS} from '../js/constants/api-options.js';
     menuControl.open(menu);
     user.isAuth();
     curDate.textContent = `Сегодня: ${getCurDateTime.getCurDate()}`;
-    
-
-
-
-
-
-
-
-
-
 
 
 

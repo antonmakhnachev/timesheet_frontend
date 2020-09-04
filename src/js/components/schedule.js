@@ -1,8 +1,9 @@
 // import { GetCurDateTime } from "../utils/getCurDateTime";
 
 export class Schedule {
-    constructor(api) {
+    constructor(api, getCurDateTime) {
         this.api = api;
+        this.getCurDateTime = getCurDateTime;
     };
 
     getScheduleDays(dateFrom, dateTo) {
@@ -29,7 +30,7 @@ export class Schedule {
 
         for (const day of days) {
             schedule.insertAdjacentHTML('beforeend', `
-                <div class="schedule__day" id="${day.ID_DAY}">
+                <div class="schedule__day" data-idday="${day.ID_DAY}">
                     <p class="schedule__text">${day.DAY_NAME_SHORT}</p>
                     <input type="time" class="schedule__time">
                 </div>
@@ -47,7 +48,7 @@ export class Schedule {
 
         for (const day of days) {
             schedule.insertAdjacentHTML('beforeend', `
-                <div class="schedule__day" id="${day.ID_DATE}">
+                <div class="schedule__day" data-date="${day.DATE_FROM}" data-idday="${day.ID_DAY_WEEK}">
                     <p class="schedule__text">${day.DATE_NAME_SHORT.slice(0,5)}</p>
                     <input type="time" class="schedule__time">
                 </div>
@@ -76,14 +77,23 @@ export class Schedule {
         const isUnnormal =  Number(document.getElementById('is_unnormal').checked);
         const isShort = Number(document.getElementById('is_short').checked);
         const isIndivid = Number(document.getElementById('is_individ').checked);
-        const dateFrom = document.getElementById('period_date_from').value || new Date();
-        const dateTo = document.getElementById('period_date_to').value || new Date('9999-12-31');        
+        // const dateFrom = document.getElementById('period_date_from').value;
+        // const dateTo = document.getElementById('period_date_to').value || this.getCurDateTime.getLastDayOfYear();        
         const startDayHours = document.getElementById('start_day_time').value.slice(0,2);
         const startDayMinutes = document.getElementById('start_day_time').value.slice(3,5);
+        let dateFrom;
+        let dateTo;
         let durationDayHours;
         let durationDayMinutes;
         let isWorkday;
-        let idDay;       
+        let idDay;
+        
+        
+        // console.log(dateFrom)
+        // console.log(dateTo)
+        // const dateDiff = this.getCurDateTime.getDateDiff(dateFrom, dateTo)
+        // console.log(dateDiff)
+        
 
         this.api.addSchedule(scheduleName, dateEnd, isUnnormal, isShort, isIndivid)
          .then((result) => {
@@ -96,9 +106,27 @@ export class Schedule {
                 } else {
                     isWorkday = 0;
                 };
-                idDay = day.id;
+
+                if (!isIndivid) {
+                    dateFrom = document.getElementById('period_date_from').value;
+                    dateTo = document.getElementById('period_date_to').value || this.getCurDateTime.getLastDayOfYear();
+                    idDay = day.dataset.idday;
+                } else {
+                    dateFrom = day.dataset.date.slice(0,10);
+                    dateTo = day.dataset.date.slice(0,10);
+                    idDay = day.dataset.idday;
+                }
+                // console.log(dateFrom);
+
+                
+                                 
                 durationDayHours = day.querySelector('.schedule__time').value.slice(0,2) || 0;
-                durationDayMinutes = day.querySelector('.schedule__time').value.slice(3,5) || 0;                
+                durationDayMinutes = day.querySelector('.schedule__time').value.slice(3,5) || 0;
+                // durationDayHours = day.querySelector('.schedule__time').value;
+                // durationDayMinutes = day.querySelector('.schedule__time').value;
+                // console.log(day)
+                // console.log(idDay)  
+                // console.log(idDate)              
                 this.api.addScheduleDays(idSchedule, idDay, startDayHours, startDayMinutes, durationDayHours, durationDayMinutes,
                     isWorkday, dateFrom, dateTo)
                 .then((result) => console.log(result))

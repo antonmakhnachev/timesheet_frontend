@@ -201,6 +201,18 @@ export class Api {
             })
         })
         .then(res => this._getResponseData(res))
-    }
+    };
+
+    getIdDay(dateFrom) {
+
+        return fetch(`${this.options.baseUrl}/getdata/getidday/${dateFrom}`, {
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }               
+        })
+        .then(res => this._getResponseData(res))        
+    };
     
 };

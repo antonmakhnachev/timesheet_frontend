@@ -25,4 +25,12 @@ export class GetCurDateTime {
 
         return curDate;
     };
+
+    getLastDayOfYear() {
+        return `${this.year}-12-31`
+    }
+
+    getDateDiff(dateFrom, dateTo) {
+        return Math.ceil(Math.abs(new Date(dateTo).getTime() - new Date(dateFrom).getTime()) / (1000 * 3600 * 24) + 1);
+    }
 };
