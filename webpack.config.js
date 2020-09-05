@@ -9,13 +9,13 @@ const execFile = require('child_process').execFile;
 const pngquant = require('pngquant-bin');
 const imagemin = require('imagemin');
 const imageminPngquant = require('imagemin-pngquant');
-const { resolve } = require('path');
+// const { resolve } = require('path');
 const pngquantExec = execFile(pngquant, ['-o', 'output.png', 'input.png']);
 module.exports = {
   entry: { 
-          main: __dirname + '/src/main.js',
-          timesheet: __dirname + '/src/timesheet/timesheet.js',
-          staff: __dirname + '/src/staff/staff.js'
+          main:  './src/index.js',
+          timesheet: './src/timesheet/index.js',
+          staff:  './src/staff/index.js',
         },
   output: {
     path: path.resolve (__dirname, 'dist'),
@@ -23,17 +23,21 @@ module.exports = {
   },
   module: {
     rules: [
+      
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+        
         },
       },
       {
         test: /\.css$/i,
-        use: [
-          (isDev ? 'style-loader' : MiniCssExtractPlugin.loader), 'css-loader', 'postcss-loader'
+        exclude: /mode_modules/,
+        use: [ 'style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'
+          // (isDev ? 'style-loader' : MiniCssExtractPlugin.loader), 'css-loader', 'postcss-loader'
+          // (isDev ? 'style-loader' : MiniCssExtractPlugin.loader), 'css-loader', 'postcss-loader'
         ],
       }, // настройкa плагина image-webpack-loader
       {
@@ -69,18 +73,21 @@ module.exports = {
     }),
     new HtmlWebpackPlugin ({
       inject: false,
-      template: __dirname + '/src/main.html',
-      // filename: 'auth.html',
+      hash: true,
+      template: './src/index.html',
+      filename: 'index.html',
     }),
     new HtmlWebpackPlugin ({
       inject: false,
-      template: __dirname + '/src/timesheet/timesheet.html',
-      // filename: 'main.html',
+      hash: true,
+      template:  './src/timesheet.html',
+      filename: 'timesheet.html',
     }),
     new HtmlWebpackPlugin ({
       inject: false,
-      template: __dirname + '/src/staff/staff.html',
-      // filename: 'staff.html',
+      hash: true,
+      template:  './src/staff.html',
+      filename: 'staff.html',
     }),
     new webpack.DefinePlugin ({
       NODE_ENV: JSON.stringify (process.env.NODE_ENV),
