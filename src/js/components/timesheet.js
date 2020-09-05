@@ -5,6 +5,12 @@ export class Timesheet {
         const rowHeadSecond = document.querySelector('.table__row_head-second');
         let classCell;
 
+        rowHeadFirst.insertAdjacentHTML('beforeend', `
+            <th rowspan="2" class="table__cell">№</th>
+            <th rowspan="2" class="table__cell">Таб. номер</th>
+            <th rowspan="2" class="table__cell">Сотрудник</th>
+        `)
+
         for (const item of items) {
             if (item.IS_WORKDAY === 1) {
                 classCell = 'table__cell table__cell_days'
@@ -43,8 +49,15 @@ export class Timesheet {
 
 
     drawBody(staff, timesheet, number) {
-        const rowBodyFirst = document.querySelector('.table__row_body-first');
-        const rowBodySecond = document.querySelector('.table__row_body-second');
+        const tableBody = document.querySelector('.table__body');
+        tableBody.insertAdjacentHTML('beforeend', `
+            <tr class="table__row table__row_body-first${number}"></tr>
+            <tr class="table__row table__row_body-second${number}"></tr>
+        `)
+
+        const rowBodyFirst = tableBody.querySelector(`.table__row_body-first${number}`);
+        const rowBodySecond = tableBody.querySelector(`.table__row_body-second${number}`);
+        
         let totalDaysFirstHalf = 0;
         let totalHoursFirstHalf = 0;
         let totalDaysSecondHalf = 0;
