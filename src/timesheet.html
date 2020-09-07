@@ -8,113 +8,44 @@
         <link rel="stylesheet" href ="<%=htmlWebpackPlugin.files.chunks.timesheet.css%>">
         <title>Табель: Главная</title>
     </head>
-<body class="page">
+    <body class="page">
 
-    <header class="header">
-        <div class="logo">
-            <a href="https://glavapu-mos.ru/" target="_blank"><img class="logo__img" src="<%=require('../images/logo.png').default%>" alt="Image error"></a>
-            <p class="logo__text">Главное архитектурно-планировочное управление Москомархитектуры</p>
-        </div>
-        <div class="header__text">
-            <h1 class="head">Табель учета рабочего времени</h1>
-            <p class="date"></p>
-        </div>
-        
-        <!-- <button type="" class="button header__button-logout">Иванов Иван
-            <img class="header__logout-img" src="../../images/icon_logout_white.png">
-        </button>     -->
-        
-    </header>
+        <header class="header">
+            <div class="logo">
+                <a href="https://glavapu-mos.ru/" target="_blank"><img class="logo__img" src="<%=require('../images/logo.png').default%>" alt="Image error"></a>
+                <p class="logo__text">Главное архитектурно-планировочное управление Москомархитектуры</p>
+            </div>
+            <div class="header__text">
+                <h1 class="head">Табель учета рабочего времени</h1>
+                <p class="date"></p>
+            </div>           
+        </header>
 
 
-    <section class="content">        
+        <section class="content">        
 
-        <div class="timesheet">
-            <h2 class="timesheet__title">Табель учета рабочего времени</h2>
-            <p class="timesheet__period"></p>
+            <div class="timesheet">
 
-            <div class="button-block">
-                <button class="button timesheet__button timesheet__button_set-period">Изменить период</button>
-                <button class="button timesheet__button timesheet__button_add-doc">Добавить документ</button>
+                <h2 class="timesheet__title">Табель учета рабочего времени</h2>
+                <p class="timesheet__period"></p>
+
+                <div class="button-block">
+                    <button class="button timesheet__button timesheet__button_set-period">Изменить период</button>
+                    <button class="button timesheet__button timesheet__button_add-doc">Добавить документ</button>
+                </div>
+
+                <table class="table">
+                    <thead class="table__head">
+                        <tr class="table__row_head-first"></tr>
+                        <tr class="table__row_head-second"></tr>
+                    </thead>
+                    <tbody class="table__body"></tbody>
+                </table>
+
             </div>
 
-            <table class="table">
-                <thead class="table__head">
-                    <tr class="table__row_head-first">
-                        <!-- <th rowspan="2" class="table__cell">№</th>
-                        <th rowspan="2" class="table__cell">Таб. номер</th>
-                        <th rowspan="2" class="table__cell">Сотрудник</th>                         -->
-                        <!-- <th class="table__cell">1</th>
-                        <th class="table__cell">2</th>
-                        <th class="table__cell">3</th> -->
-                        
-
-                        <!-- <th class="table__cell">Итого за 1 половину</th>                        
-                        <th rowspan="2" class="table__cell">Итого за Август 2020</th> -->
-
-                        
-                    </tr>
-                    <tr class="table__row_head-second">                                               
-                        <!-- <th class="table__cell">16</th>
-                        <th class="table__cell">17</th>
-                        <th class="table__cell">18</th> -->
-                        
-
-                        <!-- <th class="table__cell">Итого за 2 половину</th> -->
-
-                    </tr>
-                </thead>
-
-                <tbody class="table__body">
-
-                    <!-- <tr class="table__row table__row_body-first"> -->
-
-                        <!-- <td rowspan="2" class="table__cell table__caption">1.</td>
-                        <td rowspan="2" class="table__cell table__caption">000001</td>
-                        <td rowspan="2" class="table__cell table__caption">Иванов Иван Иванович</td>
-
-                        <td class="table__cell table__data">Я8</td>
-                        <td class="table__cell table__data">Я8</td>
-                        <td class="table__cell table__data">Я8</td>
-                        
-
-                        <td class="table__cell table__data">9 дн. / 72 ч.</td>
-                        <td rowspan="2" class="table__cell table__data">18 дн. / 144 ч.</td> -->
-
-                    <!-- </tr>
-                    <tr class="table__row table__row_body-second"> -->
-                        <!-- <td class="table__cell table__data">Я8</td>
-                        <td class="table__cell table__data">Я8</td>
-                        <td class="table__cell table__data">Я8</td>
-                        
-                        
-                        <td class="table__cell table__data">9 дн. / 72 ч.</td> -->
-                    <!-- </tr> -->
-
-                    
-                    
-                </tbody>
-
-
-
-            </table>
-
-
-
-        </div>
-
-
-
-
-
-
-
-
-
-
-        <!-- меню -->
-        <nav class="popup-menu">
-
+            <!-- меню -->
+            <nav class="popup-menu">
                 <div class="popup-menu__head">
                     <div class="popup-menu__header">
                         <img class="popup-menu__menu-icon" src="<%=require('../images/icon_menu_mini_white.png').default%>" alt="Image error">
@@ -123,9 +54,7 @@
                     <img class="popup-menu__close-icon" src="<%=require('../images/icon_close_white.png').default%>" alt="Image error">
                 </div>
                 <hr class="popup-menu__line-head">
-
                 <div class="popup-menu__place">
-
                     <ul class="popup-menu__items">
                         <li class="popup-menu__item">
                             <a class="popup-menu__link" href="./timesheet.html">
@@ -147,23 +76,8 @@
                                 <span class="popup-menu__text">Отчеты</span>                                                            
                             </a>
                             <hr class="popup-menu__line">                            
-                        </li>
-                        <!-- <li class="popup-menu__item">
-                            <a class="popup-menu__link" href="">
-                                <img class="popup-menu__icon" src="../../images/icon_info_white.png" alt="Image error" title="Общая информация">
-                                <span class="popup-menu__text">Общая информация</span>                                                            
-                            </a>
-                            <hr class="popup-menu__line">
-                        </li>
-                        <li class="popup-menu__item">
-                            <a class="popup-menu__link" href="">
-                                <img class="popup-menu__icon" src="../../images/icon_calendar_white.png" alt="Image error" title="Календарный план">
-                                <span class="popup-menu__text">Производственный календарь</span>                                
-                            </a>
-                            <hr class="popup-menu__line">
-                        </li> -->
-                    </ul>        
-
+                        </li>                        
+                    </ul>
                     <ul class="popup-menu__items">
                         <li class="popup-menu__item">
                             <a class="popup-menu__link" href="">
@@ -180,74 +94,77 @@
                             <hr class="popup-menu__line">
                         </li>            
                     </ul>
-                </div>        
-
-        </nav>
-    </section>
-
-
-    <!-- форма добавления нового документа -->
-    <div class="popup">
-        <div class="popup__content popup__content_form-new-doc">
-            <h2 class="popup__title">Новый документ</h2>
-            <img class="popup__close-icon" src="<%=require('../images/icon_close_blue.png').default%>" alt="Image error">
-            <form action="" class="form" name="form_new_doc">
-                
-                    <label for="doc_staff" class="form__label">Сотрудник:</label>
-                    <select class="form__select form__select-staff" id="doc_staff">
-                        <option></option>
-                    </select>
-                
-                    <label for="doc_type" class="form__label">Документ:</label>
-                    <select class="form__select form__select-document" id="doc_type">
-                        <option></option>                        
-                    </select>
-                
-                    <label for="doc_date_from" class="form__label">Дата начала:</label>
-                    <input type="date" class="form__input form__input_date" id="doc_date_from">
-                    
-                
-                    <label for="doc_date_to" class="form__label">Дата окончания:</label>
-                    <input type="date" class="form__input form__input_date" id="doc_date_to">
-                
-                <button class="form__button button">Добавить</button>
-            </form>
-        </div>
-    </div>
-
-
-
-
-    <!-- форма изменения отчетного периода -->
-    <div class="popup">
-        <div class="popup__content popup__content_form-set-period">
-            <h2 class="popup__title">Период отчета</h2>
-            <img class="popup__close-icon" src="<%=require('../images/icon_close_blue.png').default%>" alt="Image error">
-            <form action="" class="form" name="form_set_period" novalidate>               
-
-                <div class="form__block">
-                    <label for="period_date_from" class="form__label">Дата начала:</label>
-                    <input type="date" class="form__input form__input_date" id="period_date_from" required>
-                    
                 </div>
+            </nav>
 
-                <div class="form__block">
-                    <label for="period_date_to" class="form__label">Дата окончания:</label>
-                    <input type="date" class="form__input form__input_date" id="period_date_to" required>
-                </div>
-                <button class="form__button button">Изменить</button>
-            </form>
-        </div>
-    </div>
+        </section>
 
-    <!-- окно для сообщений -->
-    <div class="popup">
-        <div class="popup__content popup__content_message">
-            <img class="popup__close-icon" src="<%=require('../images/icon_close_blue.png').default%>" alt="Image error">
-            <!-- <p>Сотрудник добавлен</p> -->
+        
+
+
+        <!-- форма добавления нового документа -->
+        <div class="popup">
+            <div class="popup__content popup__content_form-new-doc">
+                <h2 class="popup__title">Новый документ</h2>
+                <img class="popup__close-icon" src="<%=require('../images/icon_close_blue.png').default%>" alt="Image error">
+                <form action="" class="form" name="form_new_doc">                
+                        <label for="doc_staff" class="form__label">Сотрудник:</label>
+                        <select class="form__select form__select-staff" id="doc_staff" required>
+                            <option></option>
+                        </select>                
+                        
+                        <label for="doc_type" class="form__label">Документ:</label>
+                        <select class="form__select form__select-document" id="doc_type" required>
+                            <option></option>                        
+                        </select>                
+                        
+                        <div class="form__block">
+                        <label for="doc_date_from" class="form__label">Дата начала:</label>
+                        <input type="date" class="form__input form__input_date" id="doc_date_from" required>
+                        </div>              
+                        
+                        <div class="form__block">
+                        <label for="doc_date_to" class="form__label">Дата окончания:</label>
+                        <input type="date" class="form__input form__input_date" id="doc_date_to" required>
+                        </div>                
+                    <button class="form__button button" name="button_submit" disabled>Добавить</button>
+                </form>
+            </div>
         </div>
-    </div>
-    
-    <script type="module" src="<%=htmlWebpackPlugin.files.chunks.timesheet.entry%>"></script>
-</body>
+
+        <!-- форма изменения отчетного периода -->
+        <div class="popup">
+            <div class="popup__content popup__content_form-set-period">
+                <h2 class="popup__title">Период отчета</h2>
+                <img class="popup__close-icon" src="<%=require('../images/icon_close_blue.png').default%>" alt="Image error">
+                <form action="" class="form" name="form_set_period" novalidate>               
+
+                    <div class="form__block">
+                        <label for="period_date_from" class="form__label">Дата начала:</label>
+                        <input type="date" class="form__input form__input_date" id="period_date_from" required>
+                                            
+                    </div>
+                    <p id="period_date_from-err" class="form__error"></p>
+
+                    <div class="form__block">
+                        <label for="period_date_to" class="form__label">Дата окончания:</label>
+                        <input type="date" class="form__input form__input_date" id="period_date_to" required>
+                        
+                    </div>
+                    <p id="period_date_to-err" class="form__error"></p>
+                    <button class="form__button button" name="button_submit" disabled>Изменить</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- окно для сообщений -->
+        <!-- <div class="popup">
+            <div class="popup__content popup__content_message">
+                <img class="popup__close-icon" src="<%=require('../images/icon_close_blue.png').default%>" alt="Image error">
+                <p>Сотрудник добавлен</p>
+            </div>
+        </div> -->
+        
+        <script type="module" src="<%=htmlWebpackPlugin.files.chunks.timesheet.entry%>"></script>
+    </body>
 </html>

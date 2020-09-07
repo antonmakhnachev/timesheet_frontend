@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 83, 140, 1);
-    color: rgb(255, 255, 255);
+    /* background-color: rgba(0, 83, 140, 1);
+    color: rgb(255, 255, 255); */
     border: none;
     cursor: pointer;
 }

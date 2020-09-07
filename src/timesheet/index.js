@@ -8,7 +8,8 @@ import {GetCurDateTime} from '../js/utils/getCurDateTime.js';
 import {FillingReferences} from '../js/components/fillingReferences.js';
 import {Api} from '../js/api/api.js';
 import {API_OPTIONS} from '../js/constants/api-options.js';
-import {MONTHS, DAYS} from '../js/constants/arrays.js'
+import {MONTHS, DAYS} from '../js/constants/arrays.js';
+import {FormValidator} from '../js/components/formvalidator.js';
 
 
 (function () {
@@ -23,6 +24,7 @@ import {MONTHS, DAYS} from '../js/constants/arrays.js'
     const buttonNewDoc = document.querySelector('.timesheet__button_add-doc');
     const buttonSetPeriod = document.querySelector('.timesheet__button_set-period');
 
+    const forms = document.querySelectorAll('.form');
     const formNewDoc = document.forms.form_new_doc;
     const formSetPeriod = document.forms.form_set_period;
 
@@ -35,6 +37,7 @@ import {MONTHS, DAYS} from '../js/constants/arrays.js'
     const getCurDateTime = new GetCurDateTime(MONTHS, DAYS);
     const fillingReferences = new FillingReferences();
     const user = new User(localStorage.getItem('firstName'), localStorage.getItem('secondName'));
+    const formValidator = new FormValidator();
 
     menuHidingIcon.addEventListener('click', () => {
         menuControl.hide();        
@@ -142,6 +145,10 @@ import {MONTHS, DAYS} from '../js/constants/arrays.js'
     menuControl.open(menu);
     user.isAuth();
     curDate.textContent = `Сегодня: ${getCurDateTime.getCurDate()}`;
+
+    for (const form of forms) {
+        formValidator.setEventListener(form);
+    }
 
 
 

@@ -11,7 +11,8 @@ import {InfoMessage} from '../js/components/infoMessage.js';
 import {Api} from '../js/api/api.js';
 
 import {API_OPTIONS} from '../js/constants/api-options.js';
-import {MONTHS, DAYS} from '../js/constants/arrays.js'
+import {MONTHS, DAYS} from '../js/constants/arrays.js';
+import {FormValidator} from '../js/components/formvalidator.js';
 
 
 (function () {
@@ -23,6 +24,7 @@ import {MONTHS, DAYS} from '../js/constants/arrays.js'
     const menuShowingIcon = document.querySelector('.popup-menu__menu-icon');
     const popups = document.querySelectorAll('.popup');
     const curDate = document.querySelector('.date');
+    const forms = document.querySelectorAll('.form');
 
 
 
@@ -43,6 +45,7 @@ import {MONTHS, DAYS} from '../js/constants/arrays.js'
     const user = new User(localStorage.getItem('firstName'), localStorage.getItem('secondName'));
     const schedule = new Schedule(api, getCurDateTime);
     const infoMessage = new InfoMessage(popupControl);
+    const formValidator = new FormValidator();
 
     menuHidingIcon.addEventListener('click', () => {
         menuControl.hide();        
@@ -145,6 +148,10 @@ import {MONTHS, DAYS} from '../js/constants/arrays.js'
     menuControl.open(menu);
     user.isAuth();
     curDate.textContent = `Сегодня: ${getCurDateTime.getCurDate()}`;
+
+    for (const form of forms) {
+        formValidator.setEventListener(form);
+    }
 
 
 
