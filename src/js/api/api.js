@@ -214,5 +214,23 @@ export class Api {
         })
         .then(res => this._getResponseData(res))        
     };
+
+    addDocument(idIncident, idStaff, dateFrom, dateTo) {
+        return fetch(`${this.options.baseUrl}/timesheet/adddocument`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({
+                idIncident,
+                idStaff,
+                dateFrom,
+                dateTo                     
+            })
+        })
+        .then(res => this._getResponseData(res))
+    };
     
 };

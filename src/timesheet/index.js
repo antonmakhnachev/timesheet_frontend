@@ -13,6 +13,7 @@ import {MONTHS, DAYS} from '../js/constants/arrays.js'
 
 (function () {
 
+    
     const menu = document.querySelector('.popup-menu');
     const menuHidingIcon = document.querySelector('.popup-menu__close-icon');
     const menuShowingIcon = document.querySelector('.popup-menu__menu-icon');
@@ -37,7 +38,7 @@ import {MONTHS, DAYS} from '../js/constants/arrays.js'
 
     menuHidingIcon.addEventListener('click', () => {
         menuControl.hide();        
-    });
+    });    
 
     menuShowingIcon.addEventListener('click', () => {
         menuControl.show();        
@@ -65,6 +66,25 @@ import {MONTHS, DAYS} from '../js/constants/arrays.js'
         const popup = formSetPeriod.closest('.popup');
         popupControl.open(popup);
     });
+
+    formNewDoc.addEventListener('submit', () => {
+        event.preventDefault();
+
+        const popup = formNewDoc.closest('.popup'); 
+        const idStaff = document.getElementById('doc_staff').value;
+        const idIncident = document.getElementById('doc_type').value;
+        const dateFrom = document.getElementById('doc_date_from').value;
+        const dateTo = document.getElementById('doc_date_to').value;
+
+        console.log(idStaff, idIncident, dateFrom, dateTo)
+
+        api.addDocument(idIncident, idStaff, dateFrom, dateTo)
+            .then((res) => {
+                popupControl.close(popup);
+                console.log(res)
+            })
+            .catch(err => console.log(err));
+    })
 
 
     formSetPeriod.addEventListener('submit', () => {
