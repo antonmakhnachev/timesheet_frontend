@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="description" content="">
-        <link rel="stylesheet" href ="<%=htmlWebpackPlugin.files.chunks.timesheet.css%>">
-        <title>Табель: Главная</title>
+        <link rel="stylesheet" href ="<%=htmlWebpackPlugin.files.chunks.incidents.css%>">
+        <title>Табель: Документы</title>
     </head>
     <body class="page">
 
@@ -18,30 +18,17 @@
             <div class="header__text">
                 <h1 class="head">Табель учета рабочего времени</h1>
                 <p class="date"></p>
-            </div>           
+            </div>       
         </header>
 
 
-        <section class="content">        
+        <section class="content">
+            
+            
 
-            <div class="timesheet">
 
-                <h2 class="timesheet__title">Табель учета рабочего времени</h2>
-                <p class="timesheet__period"></p>
+            
 
-                <div class="button-block">
-                    <button class="button timesheet__button timesheet__button_set-period">Изменить период</button>                    
-                </div>
-
-                <table class="table">
-                    <thead class="table__head">
-                        <!-- <tr class="table__row_head-first"></tr>
-                        <tr class="table__row_head-second"></tr> -->
-                    </thead>
-                    <tbody class="table__body"></tbody>
-                </table>
-
-            </div>
 
             <!-- меню -->
             <nav class="popup-menu">
@@ -75,7 +62,7 @@
                                 <span class="popup-menu__text">Документы</span>                                
                             </a>
                             <hr class="popup-menu__line">
-                        </li>                     
+                        </li>                    
                         <li class="popup-menu__item">
                             <a class="popup-menu__link" href="">
                                 <img class="popup-menu__icon" src="<%=require('../images/icon_report_white.png').default%>" alt="Image error" title="Отчеты">
@@ -105,36 +92,37 @@
 
         </section>
 
-        
-
-
-        
-
-        <!-- форма изменения отчетного периода -->
+        <!-- форма добавления нового документа -->
         <div class="popup">
-            <div class="popup__content popup__content_form-set-period">
-                <h2 class="popup__title">Период отчета</h2>
+            <div class="popup__content popup__content_form-new-doc">
+                <h2 class="popup__title">Новый документ</h2>
                 <img class="popup__close-icon" src="<%=require('../images/icon_close_blue.png').default%>" alt="Image error">
-                <form action="" class="form" name="form_set_period" novalidate>               
-
-                    <div class="form__block">
-                        <label for="period_date_from" class="form__label">Дата начала:</label>
-                        <input type="date" class="form__input form__input_date" id="period_date_from" required>
-                                            
-                    </div>
-                    <p id="period_date_from-err" class="form__error"></p>
-
-                    <div class="form__block">
-                        <label for="period_date_to" class="form__label">Дата окончания:</label>
-                        <input type="date" class="form__input form__input_date" id="period_date_to" required>
+                <form action="" class="form" name="form_new_doc">                
+                        <label for="doc_staff" class="form__label">Сотрудник:</label>
+                        <select class="form__select form__select-staff" id="doc_staff" required>
+                            <option></option>
+                        </select>                
                         
-                    </div>
-                    <p id="period_date_to-err" class="form__error"></p>
-                    <button class="form__button button" name="button_submit" disabled>Изменить</button>
+                        <label for="doc_type" class="form__label">Документ:</label>
+                        <select class="form__select form__select-document" id="doc_type" required>
+                            <option></option>                        
+                        </select>                
+                        
+                        <div class="form__block">
+                        <label for="doc_date_from" class="form__label">Дата начала:</label>
+                        <input type="date" class="form__input form__input_date" id="doc_date_from" required>
+                        </div>              
+                        
+                        <div class="form__block">
+                        <label for="doc_date_to" class="form__label">Дата окончания:</label>
+                        <input type="date" class="form__input form__input_date" id="doc_date_to" required>
+                        </div>                
+                    <button class="form__button button" name="button_submit" disabled>Добавить</button>
                 </form>
             </div>
         </div>
 
+        
         <!-- окно для сообщений -->
         <!-- <div class="popup">
             <div class="popup__content popup__content_message">
@@ -143,6 +131,6 @@
             </div>
         </div> -->
         
-        <script type="module" src="<%=htmlWebpackPlugin.files.chunks.timesheet.entry%>"></script>
+        <script type="module" src="<%=htmlWebpackPlugin.files.chunks.incidents.entry%>"></script>
     </body>
 </html>

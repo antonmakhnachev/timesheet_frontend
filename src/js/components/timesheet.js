@@ -1,8 +1,20 @@
 export class Timesheet {
 
     drawHead(items) {
+        const tableHead = document.querySelector('.table__head');
+        // const tableRowsHead = tableHead.querySelectorAll('.table__row_head');
+        // for (const tableRowHead of tableRowsHead) {
+        //     tableHead.removeChild(tableRowHead);
+        // }
+
+        tableHead.insertAdjacentHTML('beforeend', `
+            <tr class="table__row_head table__row_head-first"></tr>
+            <tr class="table__row_head table__row_head-second"></tr>
+        `)
         const rowHeadFirst = document.querySelector('.table__row_head-first');
         const rowHeadSecond = document.querySelector('.table__row_head-second');
+
+
         let classCell;
 
         rowHeadFirst.insertAdjacentHTML('beforeend', `
@@ -50,6 +62,13 @@ export class Timesheet {
 
     drawBody(staff, timesheet, number) {
         const tableBody = document.querySelector('.table__body');
+
+        // const tableRows = tableBody.querySelectorAll('.table__row');
+        // for (const tableRow of tableRows) {
+        //     tableBody.removeChild(tableRow);
+        // }
+
+
         tableBody.insertAdjacentHTML('beforeend', `
             <tr class="table__row table__row_body-first${number}"></tr>
             <tr class="table__row table__row_body-second${number}"></tr>

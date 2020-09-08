@@ -16,6 +16,7 @@ module.exports = {
           main:  './src/index.js',
           timesheet: './src/timesheet/index.js',
           staff:  './src/staff/index.js',
+          incidents:  './src/incidents/index.js',
         },
   output: {
     path: path.resolve (__dirname, 'dist'),
@@ -88,6 +89,12 @@ module.exports = {
       hash: true,
       template:  './src/staff.html',
       filename: 'staff.html',
+    }),
+    new HtmlWebpackPlugin ({
+      inject: false,
+      hash: true,
+      template:  './src/incidents.html',
+      filename: 'incidents.html',
     }),
     new webpack.DefinePlugin ({
       NODE_ENV: JSON.stringify (process.env.NODE_ENV),

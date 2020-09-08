@@ -1,4 +1,4 @@
-import '../timesheet.css';
+import '../incidents.css';
 
 import {MenuControl} from '../js/components/menuControl.js';
 import {PopupControl} from '../js/components/popupControl.js';
@@ -21,7 +21,7 @@ import {FormValidator} from '../js/components/formvalidator.js';
     const popups = document.querySelectorAll('.popup');
     const curDate = document.querySelector('.date');
 
-    
+    const buttonNewDoc = document.querySelector('.timesheet__button_add-doc');
     const buttonSetPeriod = document.querySelector('.timesheet__button_set-period');
 
     const forms = document.querySelectorAll('.form');
@@ -39,69 +39,6 @@ import {FormValidator} from '../js/components/formvalidator.js';
     const user = new User(localStorage.getItem('firstName'), localStorage.getItem('secondName'));
     const formValidator = new FormValidator();
 
-    
-
-    
-
-    buttonSetPeriod.addEventListener('click', () => {
-        const popup = formSetPeriod.closest('.popup');
-        popupControl.open(popup);
-    });
-
-    
-
-
-    formSetPeriod.addEventListener('submit', () => {
-        event.preventDefault();
-        const dateFrom = document.getElementById('period_date_from').value;
-        const dateTo = document.getElementById('period_date_to').value;
-        const popup = formSetPeriod.closest('.popup');        
-
-        Promise.all([
-            api.getTimeSheetCalendar(dateFrom, dateTo),
-            api.getStaffList()            
-        ])
-        .then((data) => {
-            console.log(data)
-            const [ timesheetCalendar, staffList ] = data;
-            // console.log(staffList)
-
-            const tableHead = document.querySelector('.table__head');
-            const tableRowsHead = tableHead.querySelectorAll('.table__row_head');
-            const tableBody = document.querySelector('.table__body');
-            const tableRows = tableBody.querySelectorAll('.table__row');
-            for (const tableRowHead of tableRowsHead) {
-                tableHead.removeChild(tableRowHead);
-            }
-            
-            for (const tableRow of tableRows) {
-                tableBody.removeChild(tableRow);
-            }
-
-            timesheet.drawHead(timesheetCalendar.timesheetCalendar)
-
-            for (const staff of staffList.staffList) {
-                const number = staffList.staffList.indexOf(staff) + 1;
-                console.log(staff)
-                api.getStaffTimesheet(staff.ID_STAFF, dateFrom, dateTo)
-                    .then((data) => {
-                        timesheet.drawBody(staff, data.staffTimesheet, number);                        
-                    })
-            }
-
-        })       
-        .then(() => {
-            timesheet.setPeriod(dateFrom, dateTo)
-        })
-        .then(() => {
-            popupControl.close(popup);
-        })
-        .catch(err => console.log(err));
-    });
-
-
-
-
     menuHidingIcon.addEventListener('click', () => {
         menuControl.hide();        
     });    
@@ -109,6 +46,9 @@ import {FormValidator} from '../js/components/formvalidator.js';
     menuShowingIcon.addEventListener('click', () => {
         menuControl.show();        
     });
+
+    
+
 
     for (const popup of popups) {
         const closeIcon = popup.querySelector('.popup__close-icon');
