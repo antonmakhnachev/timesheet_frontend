@@ -1,17 +1,17 @@
-.form__select {
+.form__input-date {
     font-size: 14px;
-    width: max-content;
+    width: 150px;    
     height: 30px;
     box-sizing: border-box;    
     border: none;
     border-bottom: 1px rgb(0, 83, 140) solid;
     padding-left: 0;
-    /* margin-bottom: 10px; */
+    margin: 0;
 
     /* border: 1px red solid; */
+    
 }
 
-.form__select:focus {
+.form__input-date:focus {
     outline: none;
 }
-

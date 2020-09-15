@@ -32,10 +32,10 @@ export class FormValidator {
 
         if (form.checkValidity()) {
             button.disabled = false;
-            button.classList.add('form__button_is-active');
+            button.classList.remove('button_is-disabled');
         } else {
             button.disabled = true;
-            button.classList.remove('form__button_is-active');
+            button.classList.add('button_is-disabled');
         }
 
         

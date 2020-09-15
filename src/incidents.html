@@ -23,6 +23,76 @@
 
 
         <section class="content">
+
+            <div class="manager">
+                <h2 class="manager__title">Справочник документов</h2>
+                <h3 class="manager__subtitle"></h3>
+
+                <div class="button-block">
+                    <button class="button" id="button_new_doc">Новый документ</button>                   
+
+                    <div class="popup__content_form-search">
+                        <!-- <form class="form" name="form_search"> -->
+                            <div class="form__block">
+                                <label for="form_search_type" class="form__label">Документ:</label>
+                                <select class="form__select form__select-document" id="form_search_type" required>
+                                    <option>*</option>                        
+                                </select>                            
+                            </div>
+
+                            <div class="form__block">
+                                <label for="form_search_staff" class="form__label">Сотрудник:</label>
+                                <select class="form__select form__select-staff" id="form_search_staff" required>
+                                    <option>*</option>                      
+                                </select>
+                            </div>
+    
+                            <div class="form__block">
+                                <label for="form_search_date_from" class="form__label">Дата начала:</label>
+                                <input type="date" class="form__input-date" id="form_search_date_from" required>
+                            </div>              
+                            
+                            <div class="form__block">
+                                <label for="form_search_date_to" class="form__label">Дата окончания:</label>
+                                <input type="date" class="form__input-date" id="form_search_date_to" required>
+                            </div>
+
+                            <button class="button" id="button_search_doc">Найти</button>
+                        <!-- </form> -->
+                    </div>
+                    
+                </div>
+
+                
+
+            </div>
+
+            <table class="table">
+                <col width="2%">
+                <col width="10%">
+                <col width="5%">
+                <col width="5%">
+                <col width="30%">
+                <col width="20%">
+                <col width="5%">
+                <col width="10%">
+                <thead class="table__head">
+                    <tr>
+                        <th class="table__cell">№</th>
+                        <th class="table__cell">Документ</th>                        
+                        <th class="table__cell">Дата начала</th>
+                        <th class="table__cell">Дата окончания</th>
+                        <th class="table__cell">Сотрудник</th>                    
+                        <th class="table__cell">Автор</th>
+                        <th class="table__cell">Дата создания</th>
+                        <th class="table__cell">Статус</th>                    
+                    </tr>                   
+                </thead>
+
+                <tbody class="table__body">
+                    
+                </tbody>
+            </table>
             
             
 
@@ -98,26 +168,42 @@
                 <h2 class="popup__title">Новый документ</h2>
                 <img class="popup__close-icon" src="<%=require('../images/icon_close_blue.png').default%>" alt="Image error">
                 <form action="" class="form" name="form_new_doc">                
-                        <label for="doc_staff" class="form__label">Сотрудник:</label>
-                        <select class="form__select form__select-staff" id="doc_staff" required>
-                            <option></option>
-                        </select>                
                         
-                        <label for="doc_type" class="form__label">Документ:</label>
-                        <select class="form__select form__select-document" id="doc_type" required>
-                            <option></option>                        
-                        </select>                
-                        
-                        <div class="form__block">
-                        <label for="doc_date_from" class="form__label">Дата начала:</label>
-                        <input type="date" class="form__input form__input_date" id="doc_date_from" required>
-                        </div>              
-                        
-                        <div class="form__block">
-                        <label for="doc_date_to" class="form__label">Дата окончания:</label>
-                        <input type="date" class="form__input form__input_date" id="doc_date_to" required>
-                        </div>                
-                    <button class="form__button button" name="button_submit" disabled>Добавить</button>
+                    <label for="form_new_doc_type" class="form__label">Документ:</label>
+                    <select class="form__select form__select-document" id="form_new_doc_type" required>
+                        <option></option>                        
+                    </select>
+                    <p id="form_new_doc_type-err" class="form__error"></p>
+
+                    <label for="form_new_doc_staff" class="form__label">Сотрудник:</label>
+                    <select class="form__multi-select form__select-staff" id="form_new_doc_staff" multiple required>                        
+                    </select>
+                    <p id="form_new_doc_staff-err" class="form__error"></p>                
+                    
+                                    
+                    
+                    <div class="form__block">
+                        <label for="form_new_doc_date_from" class="form__label">Дата начала:</label>
+                        <input type="date" class="form__input-date" id="form_new_doc_date_from" required>
+                    </div>
+                    <p id="form_new_doc_date_from-err" class="form__error"></p>              
+                    
+                    <div class="form__block">
+                        <label for="form_new_doc_date_to" class="form__label">Дата окончания:</label>
+                        <input type="date" class="form__input-date" id="form_new_doc_date_to" required>
+                    </div>
+                    <p id="form_new_doc_date_to-err" class="form__error"></p>
+
+                    <div class="form__block">
+                        <label class="form__label" for="is_draft">Использовать как черновик</label>
+                        <input class="form__checkbox" id="is_draft" type="checkbox">
+                    </div>
+                    <p id="is_draft-err" class="form__error"></p>
+
+                    <div class="button-block">              
+                        <button type="submit" class="form__button button button_is-disabled" name="button_submit" disabled>Добавить</button>
+                        <button type="reset" class="form__button button">Отмена</button>
+                    </div>
                 </form>
             </div>
         </div>

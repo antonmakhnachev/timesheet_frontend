@@ -24,6 +24,17 @@ export class Api {
         .then(res => this._getResponseData(res))
     }
 
+    createNewId() {
+        return fetch(`${this.options.baseUrl}/getdata/createnewid`, {
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }               
+        })
+        .then(res => this._getResponseData(res))
+    };
+
 
     getAllPositions() {
 
@@ -215,7 +226,7 @@ export class Api {
         .then(res => this._getResponseData(res))        
     };
 
-    addDocument(idIncident, idStaff, dateFrom, dateTo) {
+    addDocument(idDocument, idIncident, idStaff, dateFrom, dateTo, isDraft) {
         return fetch(`${this.options.baseUrl}/timesheet/adddocument`, {
             method: 'POST',
             credentials: 'include',
@@ -224,13 +235,39 @@ export class Api {
                 authorization: `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({
+                idDocument,
                 idIncident,
                 idStaff,
                 dateFrom,
-                dateTo                     
+                dateTo,
+                isDraft                  
             })
         })
         .then(res => this._getResponseData(res))
+    };
+
+    getAllDocuments(dateFrom, dateTo) {
+
+        return fetch(`${this.options.baseUrl}/getdata/getalldocuments/${dateFrom}&${dateTo}`, {
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }               
+        })
+        .then(res => this._getResponseData(res))        
+    };
+
+    getDocumentStaff(idDocument) {
+
+        return fetch(`${this.options.baseUrl}/getdata/getdocumentstaff/${idDocument}`, {
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }               
+        })
+        .then(res => this._getResponseData(res))        
     };
     
 };

@@ -1,7 +1,5 @@
 .table__row {
-    height: 50px;
-    border: 1px red solid;
-    
-
-    
+    height: auto;    
+    /* border: 1px red solid;    */
 }
+

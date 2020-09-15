@@ -1,8 +1,8 @@
 .form__block {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 10px;
+    align-items: center;
+    /* margin-bottom: 10px; */
 
     /* border: 1px red solid; */
     

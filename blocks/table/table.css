@@ -6,10 +6,12 @@
 @import url("./__row/table__row.css");
 @import url("./__body/table__body.css");
 
+
 .table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
+    /* table-layout: fixed; */
     
     
 }

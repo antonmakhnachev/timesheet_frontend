@@ -1,0 +1,4 @@
+.button.button_is-disabled {
+    background-color: darkgray;
+    color: grey;
+}

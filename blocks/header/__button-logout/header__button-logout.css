@@ -1,8 +1,11 @@
 .header__button-logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 265px;
     height: 32px;
     font-size: 18px;    
     margin-left: auto;
-    background-color: rgba(0, 83, 140, 1);
-    color: rgb(255, 255, 255);
+    /* background-color: rgba(0, 83, 140, 1);
+    color: rgb(255, 255, 255); */
 }

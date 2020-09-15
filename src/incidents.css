@@ -12,6 +12,9 @@
 @import url("../blocks/popup/popup.css");
 @import url("../blocks/table/table.css");
 
+@import url("../blocks/manager/manager.css");
+@import url("../blocks/button-block/button-block.css");
+
 
 
 
@@ -19,7 +22,7 @@
 
 .page {
     position: relative;
-    max-width: 1440px;
+    max-width: 100%;
     margin: auto;
     font-family: 'HelveticaNeueCyr';
     font-weight: normal;

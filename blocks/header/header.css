@@ -6,7 +6,9 @@
 
 .header {    
     display: flex;
-    align-items: center;    
+    align-items: center;
+    justify-content: space-between;
     padding: 0 50px 11px 50px;
-    border-bottom: 2px rgba(224, 229, 234, 1) solid;    
+    /* border-bottom: 2px rgba(224, 229, 234, 1) solid;     */
+    border: 1px red solid;
 }

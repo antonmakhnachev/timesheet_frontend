@@ -1,0 +1,7 @@
+@import url("./__title/manager__title.css");
+
+.manager {
+    border-bottom: 2px rgba(224, 229, 234, 1) solid;
+
+    /* border: 1px red solid; */
+}
