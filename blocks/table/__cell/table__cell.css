@@ -1,14 +1,13 @@
 .table__cell {
     border: 1px #000000 solid;
     padding-left: 3px;
-    word-wrap:break-word;
-}
-
-.table__cell_red {
-    color: red;
+    word-wrap:break-word;    
+    text-align: center;
+    
 }
 
 .table__cell_days {
     width: 40px;
+    height: 30px;
     
 }

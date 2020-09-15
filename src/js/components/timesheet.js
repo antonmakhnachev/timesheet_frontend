@@ -1,134 +1,176 @@
 export class Timesheet {
+    constructor(api) {
+        this.api = api;
+    };
 
-    drawHead(items) {
-        const tableHead = document.querySelector('.table__head');
-        // const tableRowsHead = tableHead.querySelectorAll('.table__row_head');
-        // for (const tableRowHead of tableRowsHead) {
-        //     tableHead.removeChild(tableRowHead);
-        // }
+    async getTimesheetData(dateFrom, dateTo) {
+        const table = document.querySelector('.table');
+        const tableHead = document.createElement('thead');
+        const tableBody = document.createElement('tbody');
+        
+        tableHead.classList.add('table__head');
+        tableBody.classList.add('table__body');
+        
+        const calendar = await this.api.getTimeSheetCalendar(dateFrom, dateTo);
+        const staffList = await this.api.getStaffList();
 
-        tableHead.insertAdjacentHTML('beforeend', `
-            <tr class="table__row_head table__row_head-first"></tr>
-            <tr class="table__row_head table__row_head-second"></tr>
-        `)
-        const rowHeadFirst = document.querySelector('.table__row_head-first');
-        const rowHeadSecond = document.querySelector('.table__row_head-second');
+        
 
+        await this.createTableHead(tableHead, calendar.timesheetCalendar)
+       
+        for (const staff of staffList.staffList) {
+            const number = staffList.staffList.indexOf(staff) + 1
+            const staffTimesheet = await this.api.getStaffTimesheet(staff.ID_STAFF, dateFrom, dateTo)
+           
+            await this.createTableBody(tableBody, staff, staffTimesheet.staffTimesheet, calendar.timesheetCalendar.length, number)           
+        };
+        
+        table.appendChild(tableHead);
+        table.appendChild(tableBody);       
+    };
 
-        let classCell;
+    createTableHead(tableHead, calendar) {      
 
-        rowHeadFirst.insertAdjacentHTML('beforeend', `
-            <th rowspan="2" class="table__cell">№</th>
-            <th rowspan="2" class="table__cell">Таб. номер</th>
-            <th rowspan="2" class="table__cell">Сотрудник</th>
-        `)
+        const rowHeadFirst = document.createElement('tr');
+        const rowHeadSecond = document.createElement('tr');
+        const rowHeadThird = document.createElement('tr');
 
-        for (const item of items) {
-            if (item.IS_WORKDAY === 1) {
-                classCell = 'table__cell table__cell_days'
-            } else {
-                classCell =' table__cell table__cell_days table__cell_red'
-            }
-
-            if (items.indexOf(item) <= 14) {
-                rowHeadFirst.insertAdjacentHTML('beforeend', `<th class="${classCell}">${item.DATE_NAME_SHORT.slice(0,2)}</th>`)
-            } else {
-                rowHeadSecond.insertAdjacentHTML('beforeend', `<th class="${classCell}">${item.DATE_NAME_SHORT.slice(0,2)}</th>`)
-            }
-                    
-        }
-
-        if (items.length - 15 > 15) {            
-            rowHeadFirst.insertAdjacentHTML('beforeend', `<th class="table__cell">X</th>`);
-        } else if (items.length - 15 < 15) {           
-            rowHeadSecond.insertAdjacentHTML('beforeend', `<th class="table__cell">X</th>`);
-        }
+        rowHeadFirst.classList.add('table__row_head');
+        rowHeadSecond.classList.add('table__row_head');
+        rowHeadThird.classList.add('table__row_head');
 
         rowHeadFirst.insertAdjacentHTML('beforeend', `
-            <th class="table__cell">Итого за 1 половину</th>                        
-            <th rowspan="2" class="table__cell">Итого за месяц</th>
+            <th rowspan="2" class="table__cell"></th>
+            <th rowspan="2" class="table__cell">Фамилия, имя, отчество</th>            
+            <th rowspan="2" colspan="2" class="table__cell">Учетный номер</th>
+            <th rowspan="2" class="table__cell">Должность (профессия)</th>
+            <th colspan="${calendar.length + 2}" class="table__cell">Числа месяца</th>
+        `);
+
+        for (let i=0; i < 15; i++) {
+            rowHeadSecond.insertAdjacentHTML('beforeend', `
+                <th class="table__cell">${calendar[i].DATE_NAME_SHORT.slice(0,2)}</th>            
             `);
+        };
 
         rowHeadSecond.insertAdjacentHTML('beforeend', `
-            <th class="table__cell">Итого за 2 половину</th>
+                <th class="table__cell">Итого дней (часов) явок (неявок) с 1 по 15</th>            
             `);
+        
+
+        for (let i = 15; i < calendar.length; i++) {
+            rowHeadSecond.insertAdjacentHTML('beforeend', `
+                <th class="table__cell">${calendar[i].DATE_NAME_SHORT.slice(0,2)}</th>            
+            `);
+        };
+
+        rowHeadSecond.insertAdjacentHTML('beforeend', `
+            <th class="table__cell">Всего дней (часов) явок (неявок) за месяц</th>            
+        `);        
+         
+
+        for (let i = 0; i < calendar.length + 7; i++) {
+            rowHeadThird.insertAdjacentHTML('beforeend', `
+            <th class="table__cell">${i + 1}</th>           
+        `);
+        };
+
+        tableHead.appendChild(rowHeadFirst);
+        tableHead.appendChild(rowHeadSecond);
+        tableHead.appendChild(rowHeadThird);
+
+        return tableHead;        
     };
+
+
+
+    createTableBody(tableBody, staff, staffTimesheet, countDays, number) {
+        let countWorkday = 0;
+        let durationWorkday = 0;
+        let durationWorkdayFirstHalf = 0;       
+
+        const rowBodyFirst = document.createElement('tr');
+        const rowBodySecond = document.createElement('tr');        
+
+        rowBodyFirst.classList.add('table__row');
+        rowBodySecond.classList.add('table__row');
+
+        if (number % 2 === 0) {
+            rowBodyFirst.classList.add('table__row_even-number');
+            rowBodySecond.classList.add('table__row_even-number');            
+        };
+
+        rowBodyFirst.insertAdjacentHTML('beforeend', `
+            <td rowspan="2" class="table__cell">${number}</td>
+            <td rowspan="2" class="table__cell">${staff.STAFF_NAME}</td>
+            <td rowspan="2" class="table__cell">${staff.EMPLOYEE_NUMBER}</td>
+            <td rowspan="2" class="table__cell"></td>
+            <td rowspan="2" class="table__cell">${staff.POSITION_NAME}</td>
+        `);
+
+        // первая половина месяца
+        for (let i = 0; i < 15; i++) {
+            if (staffTimesheet[i].DURATION_DAY_HOURS === 0 && staffTimesheet[i].DURATION_DAY_MINUTES === 0) {
+                durationWorkday = '-'
+            } else {
+                durationWorkday = staffTimesheet[i].DURATION_DAY_HOURS + staffTimesheet[i].DURATION_DAY_MINUTES / 60;
+                durationWorkdayFirstHalf += durationWorkday;
+                countWorkday++;
+            };
+
+            rowBodyFirst.insertAdjacentHTML('beforeend', `
+                <td class="table__cell table__cell_days">${durationWorkday}</td>
+            `);
+
+            rowBodySecond.insertAdjacentHTML('beforeend', `
+                <td class="table__cell table__cell_days">${staffTimesheet[i].INCIDENT_CODE_CHAR}</td>
+            `);
+        };
+
+        rowBodyFirst.insertAdjacentHTML('beforeend', `
+                <td class="table__cell table__cell_days">Я ${countWorkday} / ${durationWorkdayFirstHalf}</td>                
+        `);
+        
+        rowBodySecond.insertAdjacentHTML('beforeend', `            
+            <td class="table__cell table__cell_days"></td>
+        `);
+
+        // вторая половина месяца
+        for (let i = 15; i < countDays; i++) {
+            if (staffTimesheet[i].DURATION_DAY_HOURS === 0 && staffTimesheet[i].DURATION_DAY_MINUTES === 0) {
+                durationWorkday = '-'
+            } else {
+                durationWorkday = staffTimesheet[i].DURATION_DAY_HOURS + staffTimesheet[i].DURATION_DAY_MINUTES / 60;
+                durationWorkdayFirstHalf += durationWorkday;
+                countWorkday++;
+            };
+
+            rowBodyFirst.insertAdjacentHTML('beforeend', `
+                <td class="table__cell table__cell_days">${durationWorkday}</td>
+            `);
+
+            rowBodySecond.insertAdjacentHTML('beforeend', `
+                <td class="table__cell table__cell_days">${staffTimesheet[i].INCIDENT_CODE_CHAR}</td>
+            `);
+        };
+
+        rowBodyFirst.insertAdjacentHTML('beforeend', `
+                <td class="table__cell table__cell_days">Я ${countWorkday} / ${durationWorkdayFirstHalf}</td>                
+        `);
+        
+        rowBodySecond.insertAdjacentHTML('beforeend', `            
+            <td class="table__cell table__cell_days"></td>
+        `);
+
+        tableBody.appendChild(rowBodyFirst);
+        tableBody.appendChild(rowBodySecond);      
+
+        return tableBody;
+    };   
+    
 
     setPeriod(dateFrom, dateTo) {
         const placePerion = document.querySelector('.timesheet__period');
         placePerion.textContent = `за период с ${dateFrom} по ${dateTo}`
-    };
-
-
-    drawBody(staff, timesheet, number) {
-        const tableBody = document.querySelector('.table__body');
-
-        // const tableRows = tableBody.querySelectorAll('.table__row');
-        // for (const tableRow of tableRows) {
-        //     tableBody.removeChild(tableRow);
-        // }
-
-
-        tableBody.insertAdjacentHTML('beforeend', `
-            <tr class="table__row table__row_body-first${number}"></tr>
-            <tr class="table__row table__row_body-second${number}"></tr>
-        `)
-
-        const rowBodyFirst = tableBody.querySelector(`.table__row_body-first${number}`);
-        const rowBodySecond = tableBody.querySelector(`.table__row_body-second${number}`);
-        
-        let totalDaysFirstHalf = 0;
-        let totalHoursFirstHalf = 0;
-        let totalDaysSecondHalf = 0;
-        let totalHoursSecondHalf = 0;
-
-        
-        rowBodyFirst.insertAdjacentHTML('beforeend', `
-            <td rowspan="2" class="table__cell table__caption">${number}.</td>
-            <td rowspan="2" class="table__cell table__caption">${staff.EMPLOYEE_NUMBER}</td>
-            <td rowspan="2" class="table__cell table__caption">${staff.STAFF_NAME}</td>            
-        `)
-
-        for (const item of timesheet) {
-            console.log(item)
-            const workTime = item.DURATION_DAY_HOURS + item.DURATION_DAY_MINUTES / 60;            
-            
-            if (timesheet.indexOf(item) <= 14) {
-                if (item.INCIDENT_CODE_CHAR === 'Я') {
-                    totalDaysFirstHalf = totalDaysFirstHalf + 1;
-                    totalHoursFirstHalf = totalHoursFirstHalf + workTime;
-                }
-
-                rowBodyFirst.insertAdjacentHTML('beforeend', `
-                    <td class="table__cell table__cell_days table__data">${item.INCIDENT_CODE_CHAR}${workTime}</td>            
-                `)
-            } else {
-                if (item.INCIDENT_CODE_CHAR === 'Я') {
-                    totalDaysSecondHalf = totalDaysSecondHalf + 1;
-                    totalHoursSecondHalf = totalHoursSecondHalf + workTime;
-                }
-
-                rowBodySecond.insertAdjacentHTML('beforeend', `
-                    <td class="table__cell table__cell_days table__data">${item.INCIDENT_CODE_CHAR}${workTime}</td>            
-                `)
-            }
-            
-        }
-
-        if (timesheet.length - 15 > 15) {            
-            rowBodyFirst.insertAdjacentHTML('beforeend', `<th class="table__cell">X</th>`);
-        } else if (timesheet.length - 15 < 15) {           
-            rowBodySecond.insertAdjacentHTML('beforeend', `<th class="table__cell">X</th>`);
-        }
-
-        rowBodyFirst.insertAdjacentHTML('beforeend', `
-            <td class="table__cell table__data">${totalDaysFirstHalf} дн. / ${totalHoursFirstHalf} ч.</td>
-            <td rowspan="2" class="table__cell table__data">${totalDaysFirstHalf + totalDaysSecondHalf} дн. / ${totalHoursFirstHalf + totalHoursSecondHalf} ч.</td>            
-        `)
-        rowBodySecond.insertAdjacentHTML('beforeend', `
-            <td class="table__cell table__data">${totalDaysSecondHalf} дн. / ${totalHoursSecondHalf} ч.</td>            
-        `)
-        
-
-    }
-}
+    };    
+};

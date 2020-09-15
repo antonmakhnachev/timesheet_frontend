@@ -33,8 +33,8 @@ export class Incidents {
                 const status = documentData.IS_DRAFT === 0 ? 'Проведен' : 'Черновик';
                 let arrStaff = [];
                 const staffList = await this.api.getDocumentStaff(documentData.ID_DOCUMENT);
-                for (const staff of staffList.staff) {            
-                    arrStaff.push(staff)
+                for (const staff of staffList.staff) {                                
+                    arrStaff.push(staff.STAFF_NAME)
                 };
                 await this.createDocumentTable(number, documentData, status, arrStaff);
             }

@@ -1,5 +1,9 @@
 .table__row {
-    height: auto;    
+    height: auto;    ; 
     /* border: 1px red solid;    */
+}
+
+.table__row_even-number {
+    background-color: beige;
 }
 

@@ -33,7 +33,7 @@ import {FormValidator} from '../js/components/formvalidator.js';
     const api = new Api(API_OPTIONS);
     const menuControl = new MenuControl(menu);
     const popupControl = new PopupControl();
-    const timesheet = new Timesheet();
+    const timesheet = new Timesheet(api);
     const getCurDateTime = new GetCurDateTime(MONTHS, DAYS);
     const fillingReferences = new FillingReferences();
     const user = new User(localStorage.getItem('firstName'), localStorage.getItem('secondName'));
@@ -57,49 +57,20 @@ import {FormValidator} from '../js/components/formvalidator.js';
         const dateTo = document.getElementById('period_date_to').value;
         const popup = formSetPeriod.closest('.popup');        
 
-        Promise.all([
-            api.getTimeSheetCalendar(dateFrom, dateTo),
-            api.getStaffList()            
-        ])
-        .then((data) => {
-            console.log(data)
-            const [ timesheetCalendar, staffList ] = data;
-            // console.log(staffList)
-
-            const tableHead = document.querySelector('.table__head');
-            const tableRowsHead = tableHead.querySelectorAll('.table__row_head');
-            const tableBody = document.querySelector('.table__body');
-            const tableRows = tableBody.querySelectorAll('.table__row');
-            for (const tableRowHead of tableRowsHead) {
-                tableHead.removeChild(tableRowHead);
-            }
-            
-            for (const tableRow of tableRows) {
-                tableBody.removeChild(tableRow);
-            }
-
-            timesheet.drawHead(timesheetCalendar.timesheetCalendar)
-
-            for (const staff of staffList.staffList) {
-                const number = staffList.staffList.indexOf(staff) + 1;
-                console.log(staff)
-                api.getStaffTimesheet(staff.ID_STAFF, dateFrom, dateTo)
-                    .then((data) => {
-                        timesheet.drawBody(staff, data.staffTimesheet, number);                        
-                    })
-            }
-
-        })       
-        .then(() => {
-            timesheet.setPeriod(dateFrom, dateTo)
-        })
-        .then(() => {
-            popupControl.close(popup);
-        })
-        .catch(err => console.log(err));
+        timesheet.getTimesheetData(dateFrom, dateTo)        
+            .then(() => {
+                timesheet.setPeriod(dateFrom, dateTo)
+            })
+            .then(() => {
+                formSetPeriod.reset();
+                popupControl.close(popup);
+            })
+            .catch(err => console.log(err));
     });
 
 
+
+    timesheet.getTimesheetData();
 
 
     menuHidingIcon.addEventListener('click', () => {
