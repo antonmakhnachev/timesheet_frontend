@@ -3,18 +3,37 @@ export class Timesheet {
         this.api = api;
     };
 
+    _clearTable(table, placePeriod) {
+        
+       const tableHead = document.getElementsByTagName('thead');
+       const tableBody = document.getElementsByTagName('tbody');
+       
+       placePeriod.textContent = '';
+        
+       if (tableHead.length !== 0) {        
+           table.removeChild(tableHead[0])
+       };
+
+       if (tableBody.length !== 0) {            
+            table.removeChild(tableBody[0])
+        };       
+    };
+
     async getTimesheetData(dateFrom, dateTo) {
-        const table = document.querySelector('.table');
-        const tableHead = document.createElement('thead');
-        const tableBody = document.createElement('tbody');
-        
-        tableHead.classList.add('table__head');
-        tableBody.classList.add('table__body');
-        
+        const placePeriod = document.querySelector('.timesheet__period');
+        const table = document.querySelector('.table');      
+
+        this._clearTable(table, placePeriod);
+
+        const preloader = document.querySelector('.preloader');        
+        preloader.classList.add('preloader_is-opened');        
+
         const calendar = await this.api.getTimeSheetCalendar(dateFrom, dateTo);
         const staffList = await this.api.getStaffList();
 
         
+        const tableHead = document.createElement('thead');
+        const tableBody = document.createElement('tbody');      
 
         await this.createTableHead(tableHead, calendar.timesheetCalendar)
        
@@ -25,9 +44,16 @@ export class Timesheet {
             await this.createTableBody(tableBody, staff, staffTimesheet.staffTimesheet, calendar.timesheetCalendar.length, number)           
         };
         
+        tableHead.classList.add('table__head');
+        tableBody.classList.add('table__body');
         table.appendChild(tableHead);
-        table.appendChild(tableBody);       
+        table.appendChild(tableBody);
+        
+        preloader.classList.remove('preloader_is-opened');
+        this.setPeriod(placePeriod, dateFrom, dateTo);
     };
+
+
 
     createTableHead(tableHead, calendar) {      
 
@@ -128,11 +154,11 @@ export class Timesheet {
         };
 
         rowBodyFirst.insertAdjacentHTML('beforeend', `
-                <td class="table__cell table__cell_days">Я ${countWorkday} / ${durationWorkdayFirstHalf}</td>                
+                <td class="table__cell table__cell_total">Я ${countWorkday} / ${durationWorkdayFirstHalf}</td>                
         `);
         
         rowBodySecond.insertAdjacentHTML('beforeend', `            
-            <td class="table__cell table__cell_days"></td>
+            <td class="table__cell table__cell_total"></td>
         `);
 
         // вторая половина месяца
@@ -155,11 +181,11 @@ export class Timesheet {
         };
 
         rowBodyFirst.insertAdjacentHTML('beforeend', `
-                <td class="table__cell table__cell_days">Я ${countWorkday} / ${durationWorkdayFirstHalf}</td>                
+                <td class="table__cell table__cell_total">Я ${countWorkday} / ${durationWorkdayFirstHalf}</td>                
         `);
         
         rowBodySecond.insertAdjacentHTML('beforeend', `            
-            <td class="table__cell table__cell_days"></td>
+            <td class="table__cell table__cell_total"></td>
         `);
 
         tableBody.appendChild(rowBodyFirst);
@@ -169,8 +195,7 @@ export class Timesheet {
     };   
     
 
-    setPeriod(dateFrom, dateTo) {
-        const placePerion = document.querySelector('.timesheet__period');
-        placePerion.textContent = `за период с ${dateFrom} по ${dateTo}`
+    setPeriod(placePeriod, dateFrom, dateTo) {        
+        placePeriod.textContent = `за период с ${dateFrom} по ${dateTo}`
     };    
 };

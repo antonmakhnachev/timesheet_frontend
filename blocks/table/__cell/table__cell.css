@@ -3,6 +3,7 @@
     padding-left: 3px;
     word-wrap:break-word;    
     text-align: center;
+    height: 30px;
     
 }
 
@@ -10,4 +11,9 @@
     width: 40px;
     height: 30px;
     
+}
+
+.table__cell_total {
+    font-weight: 500;
+    background-color: rgba(0, 83, 140, .3);
 }

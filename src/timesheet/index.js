@@ -20,15 +20,11 @@ import {FormValidator} from '../js/components/formvalidator.js';
     const menuShowingIcon = document.querySelector('.popup-menu__menu-icon');
     const popups = document.querySelectorAll('.popup');
     const curDate = document.querySelector('.date');
-
     
     const buttonSetPeriod = document.querySelector('.timesheet__button_set-period');
 
-    const forms = document.querySelectorAll('.form');
-    const formNewDoc = document.forms.form_new_doc;
+    const forms = document.querySelectorAll('.form');    
     const formSetPeriod = document.forms.form_set_period;
-
-
 
     const api = new Api(API_OPTIONS);
     const menuControl = new MenuControl(menu);
@@ -37,40 +33,30 @@ import {FormValidator} from '../js/components/formvalidator.js';
     const getCurDateTime = new GetCurDateTime(MONTHS, DAYS);
     const fillingReferences = new FillingReferences();
     const user = new User(localStorage.getItem('firstName'), localStorage.getItem('secondName'));
-    const formValidator = new FormValidator();
+    const formValidator = new FormValidator();   
 
-    
-
-    
-
+    // открытие формы установки периода
     buttonSetPeriod.addEventListener('click', () => {
         const popup = formSetPeriod.closest('.popup');
         popupControl.open(popup);
-    });
+    });    
 
-    
-
-
+    // изменение периода
     formSetPeriod.addEventListener('submit', () => {
         event.preventDefault();
+
         const dateFrom = document.getElementById('period_date_from').value;
         const dateTo = document.getElementById('period_date_to').value;
         const popup = formSetPeriod.closest('.popup');        
-
-        timesheet.getTimesheetData(dateFrom, dateTo)        
-            .then(() => {
-                timesheet.setPeriod(dateFrom, dateTo)
-            })
-            .then(() => {
-                formSetPeriod.reset();
-                popupControl.close(popup);
-            })
-            .catch(err => console.log(err));
+        
+        popupControl.close(popup);
+        timesheet.getTimesheetData(dateFrom, dateTo);           
     });
 
+    // загрузка данных на страницу
 
-
-    timesheet.getTimesheetData();
+    // загрузка табеля на текущий месяц
+    timesheet.getTimesheetData(getCurDateTime.getFirstDayOfMonth(), getCurDateTime.getLastDayOfMonth());
 
 
     menuHidingIcon.addEventListener('click', () => {
@@ -89,12 +75,6 @@ import {FormValidator} from '../js/components/formvalidator.js';
         });
     };
 
-
-
-
-
-
-
     menuControl.open(menu);
     user.isAuth();
     curDate.textContent = `Сегодня: ${getCurDateTime.getCurDate()}`;
@@ -102,17 +82,5 @@ import {FormValidator} from '../js/components/formvalidator.js';
     for (const form of forms) {
         formValidator.setEventListener(form);
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 })();

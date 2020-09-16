@@ -30,6 +30,18 @@ export class GetCurDateTime {
 
     getLastDayOfYear() {
         return `${this.year}-12-31`
+    };
+
+    getFirstDayOfMonth() {
+        return `${this.year}-${this.month + 1}-01`
+    };
+
+    getLastDayOfMonth(year, month ) {
+        const curYear = year || this.year;
+        const curMonth = month || this.month + 1;
+        const lastDay = new Date(curYear, curMonth, 0);
+
+        return `${lastDay.getFullYear()}-${lastDay.getMonth() + 1}-${lastDay.getDate()}`
     }
 
     getDateDiff(dateFrom, dateTo) {
