@@ -41,7 +41,7 @@ import {FormValidator} from '../js/components/formvalidator.js';
     const popupControl = new PopupControl();
     const getCurDateTime = new GetCurDateTime(MONTHS, DAYS);
     const fillingReferences = new FillingReferences();
-    const staffList = new StaffList();
+    const staffList = new StaffList(api);
     const user = new User(localStorage.getItem('firstName'), localStorage.getItem('secondName'));
     const schedule = new Schedule(api, getCurDateTime);
     const infoMessage = new InfoMessage(popupControl);
@@ -161,9 +161,11 @@ import {FormValidator} from '../js/components/formvalidator.js';
     };
     
 
-    api.getStaffList()
-        .then(data => staffList.render(data.staffList))
-        .catch(err => console.log(err));
+    staffList.getStaffList();
+
+    // api.getStaffList()
+    //     .then(data => staffList.render(data.staffList))
+    //     .catch(err => console.log(err));
 
 
 

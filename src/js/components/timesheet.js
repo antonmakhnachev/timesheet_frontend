@@ -5,23 +5,23 @@ export class Timesheet {
 
     _clearTable(table, placePeriod) {
         
-       const tableHead = document.getElementsByTagName('thead');
-       const tableBody = document.getElementsByTagName('tbody');
+        const tableHead = table.querySelector('.table__head');
+        const tableBody = table.querySelector('.table__body');
        
-       placePeriod.textContent = '';
+        placePeriod.textContent = '';
         
-       if (tableHead.length !== 0) {        
-           table.removeChild(tableHead[0])
-       };
+        if (tableHead) {        
+            table.removeChild(tableHead[0])
+        };
 
-       if (tableBody.length !== 0) {            
+        if (tableBody) {            
             table.removeChild(tableBody[0])
         };       
     };
 
     async getTimesheetData(dateFrom, dateTo) {
         const placePeriod = document.querySelector('.timesheet__period');
-        const table = document.querySelector('.table');      
+        const table = document.getElementById('timesheet');      
 
         this._clearTable(table, placePeriod);
 
