@@ -226,7 +226,7 @@ export class Api {
         .then(res => this._getResponseData(res))        
     };
 
-    addDocument(idDocument, idIncident, idStaff, dateFrom, dateTo, isDraft) {
+    addDocument(idDocument, idIncident, idStaff, dateFrom, dateTo, isDraft, isIncluded) {
         return fetch(`${this.options.baseUrl}/timesheet/adddocument`, {
             method: 'POST',
             credentials: 'include',
@@ -240,7 +240,8 @@ export class Api {
                 idStaff,
                 dateFrom,
                 dateTo,
-                isDraft                  
+                isDraft,
+                isIncluded,                  
             })
         })
         .then(res => this._getResponseData(res))

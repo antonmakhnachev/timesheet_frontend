@@ -30,19 +30,17 @@ export class Timesheet {
 
         const calendar = await this.api.getTimeSheetCalendar(dateFrom, dateTo);
         const staffList = await this.api.getStaffList();
-
         
         const tableHead = document.createElement('thead');
         const tableBody = document.createElement('tbody');      
 
-        await this.createTableHead(tableHead, calendar.timesheetCalendar)
+        await this.createTableHead(tableHead, calendar.timesheetCalendar);
        
         for (const staff of staffList.staffList) {
-            const number = staffList.staffList.indexOf(staff) + 1
-            const staffTimesheet = await this.api.getStaffTimesheet(staff.ID_STAFF, dateFrom, dateTo)
-            console.log(staffTimesheet.staffTimesheet)
+            const number = staffList.staffList.indexOf(staff) + 1;
+            const staffTimesheet = await this.api.getStaffTimesheet(staff.ID_STAFF, dateFrom, dateTo);       
            
-            await this.createTableBody(tableBody, staff, staffTimesheet.staffTimesheet, calendar.timesheetCalendar.length, number)           
+            await this.createTableBody(tableBody, staff, staffTimesheet.staffTimesheet, calendar.timesheetCalendar.length, number);           
         };
         
         tableHead.classList.add('table__head');
@@ -114,9 +112,7 @@ export class Timesheet {
     createTableBody(tableBody, staff, staffTimesheet, countDays, number) {
         let countWorkday = 0;
         let durationWorkday = 0;
-        let durationWorkdayFirstHalf = 0;
-        let durationUnnormal;
-        let UnnormalName;       
+        let durationWorkdayFirstHalf = 0;               
 
         const rowBodyFirst = document.createElement('tr');
         const rowBodySecond = document.createElement('tr');        
