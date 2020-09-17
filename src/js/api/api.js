@@ -271,7 +271,7 @@ export class Api {
         .then(res => this._getResponseData(res))        
     };
 
-    addUnnormalHours(idStaff, dateFrom, dateTo) {
+    addUnnormalHours(idStaff, dateFrom, dateTo, idDocument) {
         return fetch(`${this.options.baseUrl}/timesheet/addunnormalhours`, {
             method: 'POST',
             credentials: 'include',
@@ -282,10 +282,26 @@ export class Api {
             body: JSON.stringify({                
                 idStaff,
                 dateFrom,
-                dateTo                                 
+                dateTo,
+                idDocument,                                 
             })
         })
         .then(res => this._getResponseData(res))
-    }
+    };
+
+    deleteDocument(idDocument) {
+        return fetch(`${this.options.baseUrl}/timesheet/deletedocument`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({               
+                idDocument,                                 
+            })
+        })
+        .then(res => this._getResponseData(res))
+    };
     
 };
