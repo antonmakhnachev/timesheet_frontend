@@ -15,10 +15,15 @@ export class Incidents {
     };    
 
     async addDocument(staffList, idIncident, dateFrom, dateTo, isDraft) {
-        const newId = await this.api.createNewId();        
+        const newId = await this.api.createNewId();
+        let isIncluded = 1;        
         for (const staff of staffList) {
             if (staff.selected) {
-                await this.api.addDocument(newId.newId[0].NEW_ID, idIncident, staff.value, dateFrom, dateTo, isDraft);
+                if (idIncident === '917DC484-E1DF-4B0D-99EA-58C0273D0B9F') { // НРД
+                    isIncluded = 0;
+                    await this.api.addUnnormalHours(staff.value, dateFrom, dateTo);
+                }
+                await this.api.addDocument(newId.newId[0].NEW_ID, idIncident, staff.value, dateFrom, dateTo, isDraft, isIncluded);
             };
         };            
     };   

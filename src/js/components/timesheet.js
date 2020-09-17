@@ -40,6 +40,7 @@ export class Timesheet {
         for (const staff of staffList.staffList) {
             const number = staffList.staffList.indexOf(staff) + 1
             const staffTimesheet = await this.api.getStaffTimesheet(staff.ID_STAFF, dateFrom, dateTo)
+            console.log(staffTimesheet.staffTimesheet)
            
             await this.createTableBody(tableBody, staff, staffTimesheet.staffTimesheet, calendar.timesheetCalendar.length, number)           
         };
@@ -113,7 +114,9 @@ export class Timesheet {
     createTableBody(tableBody, staff, staffTimesheet, countDays, number) {
         let countWorkday = 0;
         let durationWorkday = 0;
-        let durationWorkdayFirstHalf = 0;       
+        let durationWorkdayFirstHalf = 0;
+        let durationUnnormal;
+        let UnnormalName;       
 
         const rowBodyFirst = document.createElement('tr');
         const rowBodySecond = document.createElement('tr');        
@@ -142,15 +145,23 @@ export class Timesheet {
                 durationWorkday = staffTimesheet[i].DURATION_DAY_HOURS + staffTimesheet[i].DURATION_DAY_MINUTES / 60;
                 durationWorkdayFirstHalf += durationWorkday;
                 countWorkday++;
+            };            
+
+            if (staffTimesheet[i].UNNORMAL_HOURS !== 0) {            
+                rowBodyFirst.insertAdjacentHTML('beforeend', `
+                    <td class="table__cell table__cell_days">${durationWorkday} / ${staffTimesheet[i].UNNORMAL_HOURS}</td>
+                `);
+                rowBodySecond.insertAdjacentHTML('beforeend', `
+                    <td class="table__cell table__cell_days">${staffTimesheet[i].INCIDENT_CODE_CHAR} / ${staffTimesheet[i].INCIDENT_CODE_CHAR_UNNORMAL}</td>
+                `);
+            } else {
+                rowBodyFirst.insertAdjacentHTML('beforeend', `
+                    <td class="table__cell table__cell_days">${durationWorkday}</td>
+                `);
+                rowBodySecond.insertAdjacentHTML('beforeend', `
+                    <td class="table__cell table__cell_days">${staffTimesheet[i].INCIDENT_CODE_CHAR}</td>
+                `);
             };
-
-            rowBodyFirst.insertAdjacentHTML('beforeend', `
-                <td class="table__cell table__cell_days">${durationWorkday}</td>
-            `);
-
-            rowBodySecond.insertAdjacentHTML('beforeend', `
-                <td class="table__cell table__cell_days">${staffTimesheet[i].INCIDENT_CODE_CHAR}</td>
-            `);
         };
 
         rowBodyFirst.insertAdjacentHTML('beforeend', `
@@ -171,13 +182,21 @@ export class Timesheet {
                 countWorkday++;
             };
 
-            rowBodyFirst.insertAdjacentHTML('beforeend', `
-                <td class="table__cell table__cell_days">${durationWorkday}</td>
-            `);
-
-            rowBodySecond.insertAdjacentHTML('beforeend', `
-                <td class="table__cell table__cell_days">${staffTimesheet[i].INCIDENT_CODE_CHAR}</td>
-            `);
+            if (staffTimesheet[i].UNNORMAL_HOURS !== 0) {            
+                rowBodyFirst.insertAdjacentHTML('beforeend', `
+                    <td class="table__cell table__cell_days">${durationWorkday} / ${staffTimesheet[i].UNNORMAL_HOURS}</td>
+                `);
+                rowBodySecond.insertAdjacentHTML('beforeend', `
+                    <td class="table__cell table__cell_days">${staffTimesheet[i].INCIDENT_CODE_CHAR} / ${staffTimesheet[i].INCIDENT_CODE_CHAR_UNNORMAL}</td>
+                `);
+            } else {
+                rowBodyFirst.insertAdjacentHTML('beforeend', `
+                    <td class="table__cell table__cell_days">${durationWorkday}</td>
+                `);
+                rowBodySecond.insertAdjacentHTML('beforeend', `
+                    <td class="table__cell table__cell_days">${staffTimesheet[i].INCIDENT_CODE_CHAR}</td>
+                `);
+            };            
         };
 
         rowBodyFirst.insertAdjacentHTML('beforeend', `

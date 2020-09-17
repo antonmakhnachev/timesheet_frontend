@@ -269,5 +269,22 @@ export class Api {
         })
         .then(res => this._getResponseData(res))        
     };
+
+    addUnnormalHours(idStaff, dateFrom, dateTo) {
+        return fetch(`${this.options.baseUrl}/timesheet/addunnormalhours`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({                
+                idStaff,
+                dateFrom,
+                dateTo                                 
+            })
+        })
+        .then(res => this._getResponseData(res))
+    }
     
 };
