@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="">
+        <link rel="stylesheet" href ="incidents.eeb367e10ef77bc4d562.css?97515a5708a53f50dad9">
+        <title>Табель: Документы</title>
+    </head>
+    <body class="page">
+
+        <header class="header">
+            <div class="logo">
+                <a href="https://glavapu-mos.ru/" target="_blank"><img class="logo__img" src="./images/logo.png" alt="Image error"></a>
+                <p class="logo__text">Главное архитектурно-планировочное управление Москомархитектуры</p>
+            </div>
+            <div class="header__text">
+                <h1 class="head">Табель учета рабочего времени</h1>
+                <p class="date"></p>
+            </div>       
+        </header>
+
+
+        <section class="content">
+
+            <div class="manager">
+                <h2 class="manager__title">Справочник документов</h2>
+                <h3 class="manager__subtitle"></h3>
+
+                <div class="button-block">
+                    <button class="button" id="button_new_doc">Новый документ</button>                   
+
+                    <div class="popup__content_form-search">
+                        <!-- <form class="form" name="form_search"> -->
+                            <div class="form__block">
+                                <label for="form_search_type" class="form__label">Документ:</label>
+                                <select class="form__select form__select-document" id="form_search_type" required>
+                                    <option>*</option>                        
+                                </select>                            
+                            </div>
+
+                            <div class="form__block">
+                                <label for="form_search_staff" class="form__label">Сотрудник:</label>
+                                <select class="form__select form__select-staff" id="form_search_staff" required>
+                                    <option>*</option>                      
+                                </select>
+                            </div>
+    
+                            <div class="form__block">
+                                <label for="form_search_date_from" class="form__label">Дата начала:</label>
+                                <input type="date" class="form__input-date" id="form_search_date_from" required>
+                            </div>              
+                            
+                            <div class="form__block">
+                                <label for="form_search_date_to" class="form__label">Дата окончания:</label>
+                                <input type="date" class="form__input-date" id="form_search_date_to" required>
+                            </div>
+
+                            <button class="button" id="button_search_doc">Найти</button>
+                        <!-- </form> -->
+                    </div>
+                    
+                </div>
+
+                
+
+            </div>
+
+            <table class="table" id="incidents">
+                <col width="1%">
+                <col width="2%">
+                <col width="10%">
+                <col width="5%">
+                <col width="5%">
+                <col width="30%">
+                <col width="20%">
+                <col width="5%">
+                <col width="10%">
+                <thead class="table__head">
+                    <tr>
+                        <th class="table__cell"></th>
+                        <th class="table__cell">№</th>
+                        <th class="table__cell">Документ</th>                        
+                        <th class="table__cell">Дата начала</th>
+                        <th class="table__cell">Дата окончания</th>
+                        <th class="table__cell">Сотрудник</th>                    
+                        <th class="table__cell">Автор</th>
+                        <th class="table__cell">Дата создания</th>
+                        <th class="table__cell">Статус</th>                    
+                    </tr>                   
+                </thead>                
+            </table>
+            
+            
+
+
+            
+
+
+            <!-- меню -->
+            <nav class="popup-menu">
+                <div class="popup-menu__head">
+                    <div class="popup-menu__header">
+                        <img class="popup-menu__menu-icon" src="./images/icon_menu_mini_white.png" alt="Image error">
+                        <h3 class="popup-menu__title popup-menu__text">Меню</h3>                        
+                    </div>
+                    <img class="popup-menu__close-icon" src="./images/icon_close_white.png" alt="Image error">
+                </div>
+                <hr class="popup-menu__line-head">
+                <div class="popup-menu__place">
+                    <ul class="popup-menu__items">
+                        <li class="popup-menu__item">
+                            <a class="popup-menu__link" href="./timesheet.html">
+                                <img class="popup-menu__icon" src="./images/icon_timesheet_white.png" alt="Image error" title="Табель">
+                                <span class="popup-menu__text">Табель</span>                                
+                            </a>
+                            <hr class="popup-menu__line">
+                        </li>
+                        <li class="popup-menu__item">
+                            <a class="popup-menu__link" href="./staff.html">
+                                <img class="popup-menu__icon" src="./images/icon_staff_white.png" alt="Image error" title="Сотрудники">
+                                <span class="popup-menu__text">Сотрудники</span>                                
+                            </a>
+                            <hr class="popup-menu__line">
+                        </li>
+                        <li class="popup-menu__item">
+                            <a class="popup-menu__link" href="./incidents.html">
+                                <img class="popup-menu__icon" src="./images/icon_doc_white.png" alt="Image error" title="Документы">
+                                <span class="popup-menu__text">Документы</span>                                
+                            </a>
+                            <hr class="popup-menu__line">
+                        </li>                    
+                        <li class="popup-menu__item">
+                            <a class="popup-menu__link" href="">
+                                <img class="popup-menu__icon" src="./images/icon_report_white.png" alt="Image error" title="Отчеты">
+                                <span class="popup-menu__text">Отчеты</span>                                                            
+                            </a>
+                            <hr class="popup-menu__line">                            
+                        </li>                        
+                    </ul>
+                    <ul class="popup-menu__items">
+                        <li class="popup-menu__item">
+                            <a class="popup-menu__link" href="">
+                                <img class="popup-menu__icon" src="./images/icon_support_white.png" alt="Image error" title="Поддержка">
+                                <span class="popup-menu__text">Поддержка</span>                                
+                            </a>
+                            <hr class="popup-menu__line">
+                        </li>
+                        <li class="popup-menu__item logout">
+                            <a class="popup-menu__link" href="">
+                                <img class="popup-menu__icon" src="./images/icon_logout_white.png" alt="Image error" title="Выход">
+                                <span class="popup-menu__text">Выход</span>                                
+                            </a>
+                            <hr class="popup-menu__line">
+                        </li>            
+                    </ul>
+                </div>
+            </nav>
+
+        </section>
+
+        <!-- форма добавления нового документа -->
+        <div class="popup">
+            <div class="popup__content popup__content_form-new-doc">
+                <h2 class="popup__title">Новый документ</h2>
+                <img class="popup__close-icon" src="./images/icon_close_blue.png" alt="Image error">
+                <form action="" class="form" name="form_new_doc">                
+                        
+                    <label for="form_new_doc_type" class="form__label">Документ:</label>
+                    <select class="form__select form__select-document" id="form_new_doc_type" required>
+                        <option></option>                        
+                    </select>
+                    <p id="form_new_doc_type-err" class="form__error"></p>
+
+                    <label for="form_new_doc_staff" class="form__label">Сотрудник:</label>
+                    <select class="form__multi-select form__select-staff" id="form_new_doc_staff" multiple required>                        
+                    </select>
+                    <p id="form_new_doc_staff-err" class="form__error"></p>                
+                    
+                                    
+                    
+                    <div class="form__block">
+                        <label for="form_new_doc_date_from" class="form__label">Дата начала:</label>
+                        <input type="date" class="form__input-date" id="form_new_doc_date_from" required>
+                    </div>
+                    <p id="form_new_doc_date_from-err" class="form__error"></p>              
+                    
+                    <div class="form__block">
+                        <label for="form_new_doc_date_to" class="form__label">Дата окончания:</label>
+                        <input type="date" class="form__input-date" id="form_new_doc_date_to" required>
+                    </div>
+                    <p id="form_new_doc_date_to-err" class="form__error"></p>
+
+                    <div class="form__block">
+                        <label class="form__label" for="is_draft">Использовать как черновик</label>
+                        <input class="form__checkbox" id="is_draft" type="checkbox">
+                    </div>
+                    <p id="is_draft-err" class="form__error"></p>
+
+                    <div class="button-block">              
+                        <button type="submit" class="form__button button button_is-disabled" name="button_submit" disabled>Добавить</button>
+                        <button type="reset" class="form__button button">Отмена</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        
+        <!-- окно для сообщений -->
+        <!-- <div class="popup">
+            <div class="popup__content popup__content_message">
+                <img class="popup__close-icon" src="./images/icon_close_blue.png" alt="Image error">
+                <p>Сотрудник добавлен</p>
+            </div>
+        </div> -->
+        
+        <script type="module" src="incidents.4a4a46432ac6e93367b3.js?97515a5708a53f50dad9"></script>
+    </body>
+</html>

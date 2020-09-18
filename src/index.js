@@ -37,4 +37,6 @@ import {FormValidator} from './js/components/formvalidator.js';
         formValidator.setEventListener(form);
     }
 
+    
+
 })();

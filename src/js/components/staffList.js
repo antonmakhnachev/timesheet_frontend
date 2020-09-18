@@ -48,6 +48,7 @@ export class StaffList {
 
         tableHead.insertAdjacentHTML('beforeend', `
             <tr>
+                <th rowspan="2" class="table__cell"></th>
                 <th rowspan="2" class="table__cell">№</th>
                 <th rowspan="2" class="table__cell">Таб. номер</th>
                 <th rowspan="2" class="table__cell">Сотрудник</th>
@@ -76,6 +77,7 @@ export class StaffList {
         const dateEndingWork = staff.DATE_ENDING_WORK === null ? 'Нет данных' : staff.DATE_ENDING_WORK.slice(0,10);
 
         rowBodyFirst.classList.add('table__row');
+        rowBodyFirst.setAttribute('id', staff.ID_STAFF)
         rowBodySecond.classList.add('table__row');
 
         if (number % 2 === 0) {
@@ -83,7 +85,8 @@ export class StaffList {
             rowBodySecond.classList.add('table__row_even-number');            
         };       
 
-        rowBodyFirst.insertAdjacentHTML('beforeend', `            
+        rowBodyFirst.insertAdjacentHTML('beforeend', `
+            <td rowspan="2" class="table__cell"><img class="table__edit" src="../images/icon_edit_blue.png"</td>
             <td class="table__cell" rowspan="2">${number}</td>
             <td class="table__cell" rowspan="2">${staff.EMPLOYEE_NUMBER}</td>
             <td class="table__cell" rowspan="2">${staff.STAFF_NAME}</td>
@@ -98,9 +101,19 @@ export class StaffList {
             <td class="table__cell">${dateEndingWork}</td>            
         `);
 
+        const editIcon = rowBodyFirst.querySelector('.table__edit');
+        editIcon.addEventListener('click', () => {
+            const idStaff = editIcon.closest('.table__row')
+        })
+        
+
         tableBody.appendChild(rowBodyFirst);
         tableBody.appendChild(rowBodySecond);
 
         return tableBody;
-    };    
+    };
+    
+    editStaff() {
+
+    }
 };

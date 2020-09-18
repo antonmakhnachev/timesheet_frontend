@@ -1,1 +1,1 @@
-export const URL_SERVER = 'http://localhost:3000'
+export const URL_SERVER = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'http://172.17.1.31:3000';

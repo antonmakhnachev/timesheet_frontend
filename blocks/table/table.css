@@ -6,6 +6,7 @@
 @import url("./__row/table__row.css");
 @import url("./__body/table__body.css");
 @import url("./__delete/table__delete.css");
+@import url("./__edit/table__edit.css");
 
 
 .table {
